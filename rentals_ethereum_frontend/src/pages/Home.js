@@ -12,16 +12,16 @@ const Home = () => {
   const { properties } = useSelector((state) => state?.properties);
 
   useEffect(() => {
-    dispatch(fetchProperty());
+    dispatch(fetchProperty({availability:true}));
   }, []);
 
   const [pincode, setPincode] = useState(null);
 
   const search = (term) => {
-    dispatch(fetchProperty({ pincode: term }));
+    dispatch(fetchProperty({ pincode: term , availability:true}));
   };
   const reset = () => {
-    dispatch(fetchProperty());
+    dispatch(fetchProperty({availability:true}));
   };
   return (
     <div>
