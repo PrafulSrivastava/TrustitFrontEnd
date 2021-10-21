@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import MetaMaskIcon from "../assets/images/metamask.svg";
 import GoogleIcon from "../assets/images/googleIcon.svg";
 import { ToastContainer, Toast } from "react-bootstrap";
+import {api} from "../services/api";
 
 function Login() {
   const [show, setShow] = useState(false);
@@ -34,7 +35,7 @@ function Login() {
     const params = { publicKey: publicKey };
 
     try {
-      const response = await axios.get(USER_LOGIN);
+      const response = await axios.get(USER_LOGIN+"?publicKey="+publicKey);
       if (response.status === 200) {
         const result = response.data;
         if (result.status === "SUCCESS") {
@@ -42,14 +43,13 @@ function Login() {
             return e.publicKey?.toString() === publicKey?.toString();
           });
           if (filtered[0]) {
-            console.log(filtered[0]);
             setUser(filtered[0]);
             setToken(filtered[0]?.publicKey);
             dispatch(setAuthUser(filtered[0]));
             history.push("/");
           } else {
+            
             const signUpResponse = await axios.post(USER_LOGIN, params);
-            console.log(signUpResponse);
             setUser(signUpResponse.data.data);
             setToken(signUpResponse.data.data?.publicKey);
             dispatch(setAuthUser(signUpResponse.data.data));
