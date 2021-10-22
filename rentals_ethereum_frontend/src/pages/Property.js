@@ -90,6 +90,14 @@ const Property = () => {
                                         <th>Property Type</th>
                                         <td>{item?.propertyType}</td>
                                     </tr>
+                                    <tr>
+                                        <th>Rent Per Month</th>
+                                        <td>{item?.rentAmount}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>One-Time Security Deposit</th>
+                                        <td>{item?.securityDeposit}</td>
+                                    </tr>
 
                                     <tr className={item?.availability ? 'bg-success' : 'bg-danger'}>
                                         <th className="text-white">Availability</th>

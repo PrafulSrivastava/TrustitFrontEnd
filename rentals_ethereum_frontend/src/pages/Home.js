@@ -12,16 +12,16 @@ const Home = () => {
   const { properties } = useSelector((state) => state?.properties);
 
   useEffect(() => {
-    dispatch(fetchProperty({availability:true}));
+    dispatch(fetchProperty({ availability: true }));
   }, []);
 
   const [pincode, setPincode] = useState(null);
 
   const search = (term) => {
-    dispatch(fetchProperty({ pincode: term , availability:true}));
+    dispatch(fetchProperty({ pincode: term, availability: true }));
   };
   const reset = () => {
-    dispatch(fetchProperty({availability:true}));
+    dispatch(fetchProperty({ availability: true }));
   };
   return (
     <div>
@@ -105,6 +105,14 @@ const Home = () => {
                               <tr>
                                 <th>Location</th>
                                 <td>{item?.location}</td>
+                              </tr>
+                              <tr>
+                                <th>Rent Per Month</th>
+                                <td>{item?.rentAmount}</td>
+                              </tr>
+                              <tr>
+                                <th>One-Time Security Deposit</th>
+                                <td>{item?.securityDeposit}</td>
                               </tr>
                               <tr>
                                 <th>Pincode</th>

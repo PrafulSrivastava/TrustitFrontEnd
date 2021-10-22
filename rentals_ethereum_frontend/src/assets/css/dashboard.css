@@ -39,28 +39,28 @@ strong {
 }
 
 .purple, .blue, .red, .orange, .green {
-    color: #fff;
+    color: rgb(14, 13, 13);
 }
 
 .purple {
-    background: #5133AB;
+    background: #3da78dbd;
 }
 
 
 .red {
-    background: #AC193D;
+    background: #93a058d8;
 }
 
 
 
 .green {
-    background: #00A600;
+    background: #93a058d8;
 }
 
 
 
 .blue {
-    background: #2672EC;
+    background: #18373f;
 }
 
 

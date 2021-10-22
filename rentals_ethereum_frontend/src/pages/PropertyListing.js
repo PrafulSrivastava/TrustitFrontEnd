@@ -1,35 +1,35 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import '../assets/css/property-listing.css';
 import Navbar from '../components/NavBar';
 import HomeImage from '../assets/images/home.png';
-import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchProperty} from "../slices/Property.slice";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProperty } from "../slices/Property.slice";
 
 
 const PropertyListing = () => {
 
     const dispatch = useDispatch();
 
-    const {properties} = useSelector(state=>state?.properties);
+    const { properties } = useSelector(state => state?.properties);
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        dispatch(fetchProperty({availability:true}));
+        dispatch(fetchProperty({ availability: true }));
 
-    },[])
+    }, [])
 
     const [pincode, setPincode] = useState(null);
 
     const search = term => {
-        dispatch(fetchProperty({pincode:term, availability:true}));
+        dispatch(fetchProperty({ pincode: term, availability: true }));
     }
-    const reset = ()=>{
-        dispatch(fetchProperty({availability:true}));
+    const reset = () => {
+        dispatch(fetchProperty({ availability: true }));
     }
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className="container my-5">
                 <div className="row my-2">
                     <div className="col-md-12">
@@ -47,12 +47,12 @@ const PropertyListing = () => {
                     <div className="col-md-4">
                         <div className="input-group mb-3">
                             <input type="text"
-                                   onChange={event => setPincode(event.target.value)}
-                                   className="form-control" placeholder="Enter Pincode"
-                                   aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                            <button onClick={()=>search(pincode)}  className="btn btn-success" type="button" id="button-addon2">Search
+                                onChange={event => setPincode(event.target.value)}
+                                className="form-control" placeholder="Enter Pincode"
+                                aria-label="Recipient's username" aria-describedby="button-addon2" />
+                            <button onClick={() => search(pincode)} className="btn btn-success" type="button" id="button-addon2">Search
                             </button>
-                            <button onClick={()=>reset()}  className="btn btn-warning" type="button" id="button-addon2">Reset
+                            <button onClick={() => reset()} className="btn btn-warning" type="button" id="button-addon2">Reset
                             </button>
                         </div>
                     </div>
@@ -68,44 +68,52 @@ const PropertyListing = () => {
                                     <div className={"card my-2"}>
                                         <div className={"card-body row"}>
                                             <div className={"col-md-4"}>
-                                                <img className="property-image" src={HomeImage} alt="property image"/>
+                                                <img className="property-image" src={HomeImage} alt="property image" />
                                             </div>
                                             <div className={"col-md-8"}>
                                                 <h6 className={"card-title"}>{item?.propertyName}</h6>
                                                 <div>
                                                     <table className="table table-striped table-borderless">
                                                         <tbody>
-                                                        <tr>
-                                                            <th>Unit No.</th>
-                                                            <td>{item?.unitNumber}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Bedrooms</th>
-                                                            <td>{item?.bathrooms}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Parking</th>
-                                                            <td>{item?.parking}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Location</th>
-                                                            <td>{item?.location}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Pincode</th>
-                                                            <td>{item?.pincode}</td>
-                                                        </tr>
-                                                        <tr className={item?.availability ? 'bg-success':'bg-danger'}>
-                                                            <th className="text-white">Availability</th>
-                                                            <td className="text-white">{item?.availability ? 'Available':'Not Available'}</td>
-                                                        </tr>
+                                                            <tr>
+                                                                <th>Unit No.</th>
+                                                                <td>{item?.unitNumber}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Bedrooms</th>
+                                                                <td>{item?.bathrooms}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Parking</th>
+                                                                <td>{item?.parking}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Location</th>
+                                                                <td>{item?.location}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Rent Per Month</th>
+                                                                <td>{item?.rentAmount}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>One-Time Security Deposit</th>
+                                                                <td>{item?.securityDeposit}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Pincode</th>
+                                                                <td>{item?.pincode}</td>
+                                                            </tr>
+                                                            <tr className={item?.availability ? 'bg-success' : 'bg-danger'}>
+                                                                <th className="text-white">Availability</th>
+                                                                <td className="text-white">{item?.availability ? 'Available' : 'Not Available'}</td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="card-footer bg-primary text-center">
-                                            <Link to={{pathname: `/tenant/property-view`,state: item }} className={"text-white fw-bold"}>View</Link>
+                                            <Link to={{ pathname: `/tenant/property-view`, state: item }} className={"text-white fw-bold"}>View</Link>
                                         </div>
                                     </div>
 
