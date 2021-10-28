@@ -20,8 +20,9 @@ const SetRentModal = ({isViewContractVisible,setIsViewContractVisible,selectedPr
             const response = await api.get(GET_CONTRACT_DETAILS+id);
             if(response.status===200)
             {
+               
                 //dispatch(fetchProperty());
-                alert("Populating contract.");
+                alert(JSON.stringify(response.data) );
             }
             //setIsSetRentVisible(false);
         }
@@ -41,7 +42,7 @@ const SetRentModal = ({isViewContractVisible,setIsViewContractVisible,selectedPr
             <Modal.Body>
                 <div className="row my-1">
                     <div className="col-md-12">
-                        <p>Will get you details from blockchain!!! Do you want to proceed?</p>
+                        <p>Will get you details from blockchain!!!</p>
                     </div>
                 </div>
             </Modal.Body>
