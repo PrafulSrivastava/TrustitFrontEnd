@@ -20,7 +20,7 @@ const PostPropertyNew = () => {
 
     const [rentAmount, setRentAmount] = useState(0);
     const [securityDeposit, setSecurityDeposit] = useState(0);
-    const [dateOfPosting, setDateOfPosting] = useState(0);
+    // const [dateOfPosting, setDateOfPosting] = useState(0);
      
     const submit = async (e) => {
         e.preventDefault();
@@ -64,10 +64,10 @@ const PostPropertyNew = () => {
             alert("Please enter securityDeposit");
             return false;
         }
-        if (!dateOfPosting) {
-            alert("Please enter dateOfPosting");
-            return false;
-        }
+        // if (!dateOfPosting) {
+        //     alert("Please enter dateOfPosting");
+        //     return false;
+        // }
 
 
         const params = {
@@ -82,7 +82,7 @@ const PostPropertyNew = () => {
             "propertyType": propertyType,
             "rentAmount":rentAmount,
             "securityDeposit":securityDeposit,
-            "dateOfPosting":dateOfPosting
+            // "dateOfPosting":dateOfPosting
         }
 
         try {
@@ -234,19 +234,6 @@ const PostPropertyNew = () => {
 
                             </div>
 
-                            
-                            <div className="row my-1">
-                                <div className="col-md-4">
-                                    <label htmlFor="dateOfPosting" className="form-label">dateOfPosting</label>
-                                    <input type="date" className="form-control" name={"dateOfPosting"} id="dateOfPosting"
-                                        onChange={e => setDateOfPosting(parseInt(e.target.value))}
-                                        required />
-                                    <div className="invalid-feedback">
-                                        Please enter dateOfPosting
-                                    </div>
-                                </div>
-
-                            </div>
                             
                             <div className="row my-1">
                                 <div className="col-md-4">
