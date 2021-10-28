@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import '../assets/css/my-property.css';
 import Navbar from "../components/NavBar";
-import {Link, useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const MyPropertyView = () => {
     let location = useLocation();
     const [item] = useState(location.state);
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className="container my-5">
 
                 <div className="row my-2">
@@ -32,42 +32,59 @@ const MyPropertyView = () => {
                             <div className="col-md-8">
                                 <table className="table table-striped table-borderless">
                                     <tbody>
-                                    <tr>
-                                        <th>Unit No.</th>
-                                        <td>{item?.unitNumber}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rooms</th>
-                                        <td>{item?.rooms}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Bathrooms</th>
-                                        <td>{item?.bathrooms}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Parking</th>
-                                        <td>{item?.parking}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Location</th>
-                                        <td>{item?.location}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Pincode</th>
-                                        <td>{item?.pincode}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Initial Available Date</th>
-                                        <td>{item?.initialAvailableDate}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Property Type</th>
-                                        <td>{item?.propertyType}</td>
-                                    </tr>
-                                    <tr className={item?.availability ? 'bg-success' : 'bg-danger'}>
-                                        <th className="text-white">Availability</th>
-                                        <td className="text-white">{item?.availability ? 'Available' : 'Not Available'}</td>
-                                    </tr>
+                                        <tr>
+                                            <th>Unit No.</th>
+                                            <td>{item?.unitNumber}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Rooms</th>
+                                            <td>{item?.rooms}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bathrooms</th>
+                                            <td>{item?.bathrooms}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Parking</th>
+                                            <td>{item?.parking}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Location</th>
+                                            <td>{item?.location}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Pincode</th>
+                                            <td>{item?.pincode}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Initial Available Date</th>
+                                            <td>{item?.initialAvailableDate}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Rent Per Month</th>
+                                            <td>{item?.rentAmount}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>One-Time Security Deposit</th>
+                                            <td>{item?.securityDeposit}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>NFT Token Id</th>
+                                            <td>{item?.NFTTokenId}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Property Type</th>
+                                            <td>{item?.propertyType}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Date Of Posting</th>
+                                            <td>{item?.createdAt}</td>
+                                        </tr>
+
+                                        <tr className={item?.availability ? 'bg-success' : 'bg-danger'}>
+                                            <th className="text-white">Availability</th>
+                                            <td className="text-white">{item?.availability ? 'Available' : 'Not Available'}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

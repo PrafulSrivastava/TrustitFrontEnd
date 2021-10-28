@@ -115,6 +115,14 @@ const Home = () => {
                                 <td>{item?.securityDeposit}</td>
                               </tr>
                               <tr>
+                                <th>Inital Available date</th>
+                                <td>{item?.initialAvailableDate}</td>
+                              </tr>
+                              <tr>
+                                <th>NFT Token Id</th>
+                                <td>{item?.NFTTokenId}</td>
+                              </tr>
+                              <tr>
                                 <th>Pincode</th>
                                 <td>{item?.pincode}</td>
                               </tr>

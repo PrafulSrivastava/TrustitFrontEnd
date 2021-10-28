@@ -8,6 +8,9 @@ import { useSelector} from "react-redux";
 const RentalRequestModal = ({isVisible,setIsVisible,propId})=> {
     const {user} = useSelector(state=>state?.auth);
     const [duration,setDuration] = useState(0);
+    const [securityDeposit,setSecurityDeposit] = useState(0);
+    const [rentAmount,setRentAmount] = useState(0);
+
 
 
     const sendRentalRequest = async propertyId =>{
@@ -18,7 +21,10 @@ const RentalRequestModal = ({isVisible,setIsVisible,propId})=> {
                 alert("Please enter the rent duration in month");
                 return false;
             }
-            const response = await api.post(CREATE_RENTAL_REQUEST,{propertyId,duration});
+            if(!rentAmount || !securityDeposit){
+                alert("If You do not bid for the rent and security we will consider the actual values");
+            }
+            const response = await api.post(CREATE_RENTAL_REQUEST,{propertyId,duration,rentAmount, securityDeposit});
             if(response.status===200)
             {
                 setIsVisible(false);
@@ -43,12 +49,36 @@ const RentalRequestModal = ({isVisible,setIsVisible,propId})=> {
             <Modal.Body>
                 <div className="row my-1">
                     <div className="col-md-4">
-                        <label htmlFor="duration" className="form-label">Duration</label>
+                        <label htmlFor="duration" className="form-label">Duration *</label>
                         <input type="text" className="form-control" name={"duration"} id="duration"
                                onChange={e => setDuration(parseInt(e.target.value))}
                                required/>
                         <div className="invalid-feedback">
                             Please enter rental request
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row my-1">
+                    <div className="col-md-4">
+                        <label htmlFor="rentAmount" className="form-label">Rent Amount</label>
+                        <input type="text" className="form-control" name={"rentAmount"} id="rentAmount"
+                               onChange={e => setRentAmount(parseInt(e.target.value))}
+                               />
+                        <div className="invalid-feedback">
+                            Please enter the Rent Amount
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row my-1">
+                    <div className="col-md-4">
+                        <label htmlFor="securityDeposit" className="form-label">Security Deposit</label>
+                        <input type="text" className="form-control" name={"securityDeposit"} id="securityDeposit"
+                               onChange={e => setSecurityDeposit(parseInt(e.target.value))}
+                               />
+                        <div className="invalid-feedback">
+                            Please enter the Security deposit
                         </div>
                     </div>
                 </div>
