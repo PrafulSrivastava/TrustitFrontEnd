@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import { getUser } from "./services/storage";
 import { setAuthUser } from "./slices/Auth.slice";
 import TenantRentalRequest from "./pages/TenantRentalRequest";
+import PayRent from "./pages/PayRent";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Property from "./pages/Property";
@@ -76,6 +77,10 @@ function App() {
             </Route>
             <Route exact path="/tenant/rental-requests">
               <TenantRentalRequest />
+            </Route>
+
+            <Route exact path="/tenant/pay-rent">
+              <PayRent />
             </Route>
 
             <Route exact path="/view/property">

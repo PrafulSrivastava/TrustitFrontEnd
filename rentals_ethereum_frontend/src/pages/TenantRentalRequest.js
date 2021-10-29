@@ -7,10 +7,6 @@ import { getUser } from "../services/storage";
 import { fetchTenantRentalRequests } from "../slices/TenantRentalRequest.slice";
 import { api, CREATE_PAY_RENTAL_REQUEST, CREATE_DEPOSIT_RENTAL_REQUEST } from "../services/api";
 import SetViewContractModal from "../components/SetViewContractModal";
-import Web3 from 'web3';
-
-
-let web3: Web3 | undefined = undefined; // Will hold the web3 instance
 
 const TenantRentalRequest = () => {
 
@@ -38,77 +34,21 @@ const TenantRentalRequest = () => {
         }
     }
 
-    const initPayButton = () => {
-        // paymentAddress is where funds will be send to
-        const paymentAddress = '0x192c96bfee59158441f26101b2db1af3b07feb40'
-        const amountEth = 1
-
-        web3.eth.sendTransaction({
-            to: paymentAddress,
-            value: web3.toWei(amountEth, 'ether')
-        }, (err, transactionId) => {
-            if (err) {
-                console.log('Payment failed', err)
-                // $('#status').html('Payment failed')
-            } else {
-                console.log('Payment successful', transactionId)
-                // $('#status').html('Payment successful')
-            }
-        })
-    }
-
     const sendRentalPayRequest = async contractId => {
-        // try {
-        //     const response = await api.post(CREATE_PAY_RENTAL_REQUEST + contractId);
+        try {
+            const response = await api.post(CREATE_PAY_RENTAL_REQUEST + contractId);
 
-        //     if (response.status === 200) {
-        //         alert("rent request sent successfully");
-        //     } else {
-        //         alert("check node api http.response:" + response.status);
-        //     }
-        // }
-        // catch (e) {
-
-        //     alert(e.toString());
-        // }
-        if (window.ethereum) {
-            
-            if (!(window).ethereum) {
-                window.alert('Please install MetaMask first.');
-                return;
+            if (response.status === 200) {
+                alert("rent request sent successfully");
+            } else {
+                alert("check node api http.response:" + response.status);
             }
-    
-            if (!web3) {
-                try {
-                    // Request account access if needed
-                    await (window).ethereum.enable();
-    
-                    // We don't know window.web3 version, so we use our own instance of Web3
-                    // with the injected provider given by MetaMask
-                    web3 = new Web3((window).ethereum);
-                } catch (error) {
-                    window.alert('You need to allow MetaMask.');
-                    return;
-                }
-            }
-    
-            try {
-                await (window).ethereum.enable();
-                initPayButton()
-            } catch (err) {
-                console.log(err)
-                // $('#status').html('User denied account access', err)
-            }
-        } else if (window.web3) {
-            window.web3 = new Web3(web3.currentProvider)
-            initPayButton()
-        } else {
-            console.log("No Metamask (or other Web3 Provider) installed")
-            // $('#status').html('No Metamask (or other Web3 Provider) installed')
         }
+        catch (e) {
 
+            alert(e.toString());
+        }
     }
-
 
     useEffect(() => {
         dispatch(fetchTenantRentalRequests());
@@ -185,9 +125,15 @@ const TenantRentalRequest = () => {
                                                                     <span className="mx-1">
                                                                         <button onClick={() => sendRentalDepositRequest(item?.contractId)} className="btn btn-primary">Pay Security</button>
                                                                     </span>
-                                                                    <span className="mx-1">
+                                                                    {/* <span className="mx-1">
                                                                         <button onClick={() => sendRentalPayRequest(item?.contractId)} className="btn btn-primary my-2">Pay Rent</button>
-                                                                    </span>
+                                                                    </span> */}
+
+                                                                    <div className="mx-1">
+                                                                        <Link to="/tenant/pay-rent">
+                                                                            <button className="btn btn-primary my-2">Pay Rent</button>                 
+                                                                        </Link>
+                                                                    </div>
                                                                 </>
                                                                 :
                                                                 ''
