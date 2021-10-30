@@ -2,8 +2,12 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import ErrorMessage from "./ErrorMessage";
 import TxList from "./TxList";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router";
+import { useHistory } from "react-router-dom";
 
-const startPayment = async ({ setError, setTxs, ether, addr }) => {
+const startPayment = async ({ setError, setTxs, ether, addr, history }) => {
+
   try {
     if (!window.ethereum)
       throw new Error("No crypto wallet found. Please install it.");
@@ -19,12 +23,18 @@ const startPayment = async ({ setError, setTxs, ether, addr }) => {
     console.log({ ether, addr });
     console.log("tx", tx);
     setTxs([tx]);
+    history.push("/tenant/rental-requests");
   } catch (err) {
     setError(err.message);
   }
 };
 
-export default function App() {
+export default function App(props) {
+  const { tenantRentalRequests } = useSelector(state => state?.tenantRentalRequest);
+  const location = useLocation();
+  let history = useHistory();
+
+  console.log(">>>props>", location.params.item.ownerAddress, location.params.item.rentAmount)
   const [error, setError] = useState();
   const [txs, setTxs] = useState([]);
 
@@ -35,8 +45,9 @@ export default function App() {
     await startPayment({
       setError,
       setTxs,
-      ether: data.get("ether"),
-      addr: data.get("addr")
+      ether: "1",
+      addr:location.params.item.ownerAddress,
+      history
     });
   };
 
@@ -54,6 +65,8 @@ export default function App() {
                 name="addr"
                 className="input input-bordered block w-full focus:ring focus:outline-none"
                 placeholder="Recipient Address"
+                value = {location.params.item.ownerAddress?location.params.item.ownerAddress:""}
+                readOnly
               />
             </div>
             <div className="my-3">
@@ -62,6 +75,8 @@ export default function App() {
                 type="text"
                 className="input input-bordered block w-full focus:ring focus:outline-none"
                 placeholder="Amount in ETH"
+                value = {location.params.item.rentAmount?location.params.item.rentAmount:""}
+                readOnly
               />
             </div>
           </div>

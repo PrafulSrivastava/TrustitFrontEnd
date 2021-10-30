@@ -130,8 +130,13 @@ const TenantRentalRequest = () => {
                                                                     </span> */}
 
                                                                     <div className="mx-1">
-                                                                        <Link to="/tenant/pay-rent">
-                                                                            <button className="btn btn-primary my-2">Pay Rent</button>                 
+                                                                        <Link to={{
+                                                                            pathname: "/tenant/pay-rent",
+                                                                            params: {
+                                                                                item
+                                                                            }
+                                                                        }}>
+                                                                            <button className="btn btn-primary my-2">Pay Rent</button>
                                                                         </Link>
                                                                     </div>
                                                                 </>
