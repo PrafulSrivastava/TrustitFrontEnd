@@ -5,8 +5,26 @@ import TxList from "./TxList";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { useHistory } from "react-router-dom";
+import { api, CREATE_PAY_RENTAL_REQUEST, CREATE_DEPOSIT_RENTAL_REQUEST } from "../services/api";
 
-const startPayment = async ({ setError, setTxs, ether, addr, history }) => {
+
+const sendRentalPayRequest = async contractId => {
+  try {
+      const response = await api.post(CREATE_PAY_RENTAL_REQUEST + contractId);
+
+      if (response.status === 200) {
+          alert("Hurrey!!! Rent Ageement created successfully!! You can view your contract now.");
+      } else {
+          alert("check node api http.response:" + response.status);
+      }
+  }
+  catch (e) {
+
+      alert(e.toString());
+  }
+}
+
+const startPayment = async ({ setError, setTxs, ether, addr, contractId , history}) => {
 
   try {
     if (!window.ethereum)
@@ -23,6 +41,7 @@ const startPayment = async ({ setError, setTxs, ether, addr, history }) => {
     console.log({ ether, addr });
     console.log("tx", tx);
     setTxs([tx]);
+    sendRentalPayRequest(contractId);
     history.push("/tenant/rental-requests");
   } catch (err) {
     setError(err.message);
@@ -45,8 +64,9 @@ export default function App(props) {
     await startPayment({
       setError,
       setTxs,
-      ether: "1",
+      ether: location.params.item.rentAmount.toString(),
       addr:location.params.item.ownerAddress,
+      contractId: location.params.item.contractId,
       history
     });
   };
