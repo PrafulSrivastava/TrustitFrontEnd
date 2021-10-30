@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../assets/css/property-listing.css";
+import "../assets/css/home.css";
+import "../components/NavBar/navbar.css";
 import Navbar from "../components/NavBar";
 import HomeImage from "../assets/images/home.png";
 import { Link } from "react-router-dom";
@@ -16,7 +18,20 @@ const Home = () => {
   }, []);
 
   const [pincode, setPincode] = useState(null);
+  const ifEnterPressed = (e) => {
+    if (e.key === 'Enter') {
+      search(pincode);
+    }
+  };
 
+  const onFocusHandler = (domObj) => {
+    domObj.type = "number"
+    domObj.placeholder = "Search by pincode...";
+  }
+  const onBlurHandler = (domObj) => {
+    domObj.type = "text"
+    domObj.placeholder = "";
+  }
   const search = (term) => {
     dispatch(fetchProperty({ pincode: term, availability: true }));
   };
@@ -27,51 +42,14 @@ const Home = () => {
     <div>
       <Navbar />
       <div className="container my-5">
-        <div className="row my-2">
-          <div className="col-md-12">
-            <nav className="text-white" aria-label="breadcrumb">
-              <ol className="breadcrumb text-white fw-bold">
-                <li className="breadcrumb-item">
-                  <Link className="text-white fw-bold" to="/">
-                    Home
-                  </Link>
-                </li>
-              </ol>
-            </nav>
-          </div>
-        </div>
-        <h4 className={"text-white fw-bold"}>Property Listing</h4>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="input-group mb-3">
-              <input
-                type="text"
-                onChange={(event) => setPincode(event.target.value)}
-                className="form-control"
-                placeholder="Enter Pincode"
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
-              />
-              <button
-                onClick={() => search(pincode)}
-                className="btn btn-success"
-                type="button"
-                id="button-addon2"
-              >
-                Search
-              </button>
-              <button
-                onClick={() => reset()}
-                className="btn btn-warning"
-                type="button"
-                id="button-addon2"
-              >
-                Reset
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className={"row"}>
+        <form action="" className="search-bar">
+          <input name="search" onChange={(event) => setPincode(event.target.value)} onFocus={(event) => onFocusHandler(event.target)} onBlur={(event) => onBlurHandler(event.target)} required></input>
+          <button className="search-btn" onSubmit={() => search(pincode)} type="submit">
+            <span>Search</span>
+          </button>
+        </form>
+        <div>
+
           {properties?.length > 0 ? (
             properties.map((item) => {
               return (
@@ -163,21 +141,14 @@ const Home = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="card-footer bg-primary text-center">
-                      <Link
-                        to={{ pathname: `/view/property`, state: item }}
-                        className={"text-white fw-bold"}
-                      >
-                        View
-                      </Link>
-                    </div>
+
                   </div>
                 </div>
               );
             })
           ) : (
             <div>
-              <h6 className="text-white fw-bold">No data found</h6>
+              <h6 classnameName="text-white fw-bold">No data found</h6>
             </div>
           )}
         </div>

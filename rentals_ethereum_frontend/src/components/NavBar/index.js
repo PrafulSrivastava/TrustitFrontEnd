@@ -5,6 +5,7 @@ import { removeAuthUSer, setAuthUser } from "../../slices/Auth.slice";
 import { getUser } from "../../services/storage";
 import { api, FETCH_USER_URL } from "../../services/api";
 import { useHistory } from "react-router-dom";
+import "./navbar.css"
 function Index() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,39 +39,24 @@ function Index() {
     history.push("/login");
   };
   return (
-    <nav className="navbar navbar-expand-lg navbar-light mx-0">
-      <div className="container">
-        <Link className="navbar-brand" to={"/"}>
-         <a href="/"> Crypto Properties </a>
-        </Link>
-        <div className="collapse navbar-collapse" id="navbarToggle">
-          <ul className="navbar-nav mr-auto">
-            {user && Object.values(user)?.length ? (
-              <>
-                <li className="nav-item">
-                  <Link to={"/dashboard"} className="nav-link fw-bold">
-                    DashBoard
-                  </Link>
-                </li>{" "}
-                <li className="nav-item">
-                  <button className="btn btn-success"
-                    onClick={() => logout()}
-                  >
-                    Log Out
-                  </button>
-                </li>{" "}
-              </>
-            ) : (
-              <li className="nav-item">
-                <Link className="btn btn-success" to={"/login"}>
-                  Login
-                </Link>
-              </li>
-            )}
-          </ul>
-        </div>
-      </div>
+    <nav>
+      <ul>
+        <li><a href="/">Crypto Properties</a></li>
+        <li><a href="#">Our Services</a></li>
+        <li><a href="/">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+        {user && Object.values(user)?.length ? (
+          <>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/" onClick={() => logout()}>Logout</a></li>
+          </>
+        ) : (
+          <li><a href="/login">Login</a></li>
+        )}
+      </ul>
     </nav>
+
+
   );
 }
 

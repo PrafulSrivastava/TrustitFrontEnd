@@ -111,6 +111,7 @@ function Login() {
         </Toast>
       </ToastContainer>
       <div>
+        <a href="/">HOME</a>
         <div className="row justify-content-center align-item-center my-2 mt-5">
           <button
             style={{

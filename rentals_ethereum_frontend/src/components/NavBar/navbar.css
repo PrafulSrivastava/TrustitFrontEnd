@@ -1,0 +1,44 @@
+body{
+  background: rgb(28, 31, 44)
+}
+ul {
+    background: rgb(28, 31, 44);
+    display: table;
+    margin: 40px auto;
+    padding: 10px 20px;
+    border-radius: 8px;
+  width: 70%;
+}
+ul li {
+    list-style: none;
+    display: inline-flex;
+  margin-left: 50px;
+}
+ul li a {
+    font-family: arial;
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+    padding: 15px 10px;
+    font-size: 20px;
+    display: block;
+}
+ul li a + a {
+    margin-left: 16px;
+}
+ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 4px;
+    background-color: #FEFEFE;
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+    transform: scaleX(0);
+}
+ul a:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+}
