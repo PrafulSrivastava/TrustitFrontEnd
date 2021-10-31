@@ -15,10 +15,10 @@ const PropertyDocs = () => {
 
     const [availability] = useState(true);
     const [propertyId, setPropertyId] = useState(item?.propertyId);
-    const [aadhar, setAadhar] = useState(item?.propertyName);
-    const [maintanceDocs, setMaintanceDocs] = useState(item?.houseNo);
-    const [khasra, setKhasra] = useState(item?.flatNo);
-    const [electricityBill, setElectricityBill] = useState(item?.street);
+    const [aadhar, setAadhar] = useState(item?.aadhar);
+    const [maintanceDocs, setMaintanceDocs] = useState(item?.maintanceDocs);
+    const [khasra, setKhasra] = useState(item?.khasra);
+    const [electricityBill, setElectricityBill] = useState(item?.electricityBill);
 
     const submit = async (e) => {
         e.preventDefault();
@@ -98,7 +98,7 @@ const PropertyDocs = () => {
                                 <div className="col-md-4">
                                     <label htmlFor="maintanceDocs" className="form-label">Maintance Document</label>
                                     <div className="input-group has-validation">
-                                        <input type="file" className="form-control" name={"maintanceDocs"} id="maintanceDocs"
+                                        <input type="file" className="form-control" name="maintanceDocs" id="maintanceDocs"
                                             value={maintanceDocs}
                                             aria-describedby="inputGroupPrepend"
                                             onChange={e => setMaintanceDocs(e.target.value)}
@@ -117,7 +117,7 @@ const PropertyDocs = () => {
                                         <input type="file" className="form-control" name="electricityBill" id="electricityBill"
                                             aria-describedby="inputGroupPrepend"
                                             value={electricityBill}
-                                            onChange={e => setElectricityBill(parseInt(e.target.value))}
+                                            onChange={e => setElectricityBill(e.target.value)}
                                             required />
                                         <div className="invalid-feedback">
                                             Please upload Electricity Bill
@@ -128,7 +128,7 @@ const PropertyDocs = () => {
                                     <label htmlFor="electricityBill" className="form-label">Electricity Bill</label>
                                     <div className="input-group has-validation">
                                         <span className="input-group-text" id="inputGroupPrepend">@</span>
-                                        <input type="text" className="form-control" name="electricityBill" id="electricityBill"
+                                        <input type="file" className="form-control" name="electricityBill" id="electricityBill"
                                             value={electricityBill}
                                             aria-describedby="inputGroupPrepend"
                                             onChange={e => setElectricityBill(e.target.value)}

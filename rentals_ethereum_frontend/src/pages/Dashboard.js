@@ -27,7 +27,7 @@ const Dashboard= () => {
                         </Link>
                     </div>
                     <div className="col-sm-4">
-                        <Link to="/tenant" className="tile orange">
+                        <Link to="/tenant" className="tile white">
                             <h3 className="title">Tenant</h3>
                             <p>Continue as tenant.</p>
                         </Link>

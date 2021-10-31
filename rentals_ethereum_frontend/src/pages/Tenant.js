@@ -32,13 +32,13 @@ const Tenant= () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-4">
-                        <Link to="/tenant/property-listing" className="tile purple">
+                        <Link to="/tenant/property-listing" className="tile red">
                             <h3 className="title">Search Properties</h3>
                             <p>Checkout listings in our website.</p>
                         </Link>
                     </div>
                     <div className="col-sm-4">
-                        <Link to="/tenant/rental-requests" className="tile orange">
+                        <Link to="/tenant/rental-requests" className="tile white">
                             <h3 className="title">Rental Request</h3>
                             <p>List of all property agreements.</p>
                         </Link>

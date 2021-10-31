@@ -21,9 +21,7 @@ const RentalRequestModal = ({isVisible,setIsVisible,propId})=> {
                 alert("Please enter the rent duration in month");
                 return false;
             }
-            if(!rentAmount || !securityDeposit){
-                alert("If You do not bid for the rent and security we will consider the actual values");
-            }
+         
             const response = await api.post(CREATE_RENTAL_REQUEST,{propertyId,duration,rentAmount, securityDeposit});
             if(response.status===200)
             {
@@ -61,8 +59,8 @@ const RentalRequestModal = ({isVisible,setIsVisible,propId})=> {
 
                 <div className="row my-1">
                     <div className="col-md-4">
-                        <label htmlFor="rentAmount" className="form-label">Rent Amount</label>
-                        <input type="text" className="form-control" name={"rentAmount"} id="rentAmount"
+                        <label htmlFor="rentAmount" className="form-label">Rent Amount (No value means default)</label>
+                        <input  type="text" className="form-control" name={"rentAmount"} id="rentAmount"
                                onChange={e => setRentAmount(parseInt(e.target.value))}
                                />
                         <div className="invalid-feedback">
@@ -73,7 +71,7 @@ const RentalRequestModal = ({isVisible,setIsVisible,propId})=> {
 
                 <div className="row my-1">
                     <div className="col-md-4">
-                        <label htmlFor="securityDeposit" className="form-label">Security Deposit</label>
+                        <label htmlFor="securityDeposit" className="form-label">Security Deposit (No value means default)</label>
                         <input type="text" className="form-control" name={"securityDeposit"} id="securityDeposit"
                                onChange={e => setSecurityDeposit(parseInt(e.target.value))}
                                />

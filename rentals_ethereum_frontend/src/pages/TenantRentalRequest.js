@@ -12,8 +12,12 @@ const TenantRentalRequest = () => {
     const dispatch = useDispatch();
     const [requests, setRequests] = useState([]);
     const { tenantRentalRequests } = useSelector(state => state?.rentalRequestJoin);
+    const  depositResp  = useSelector(depositState => depositState);
     const user = getUser();
-
+    console.log(">>depositResp", depositResp)
+    if (depositResp == true){
+        document.getElementById("depositButton").disabled = true
+    }
     const [isViewContractVisible, setIsViewContractVisible] = useState(false);
     const [selectedPropertyId, setSelectedPropertyId] = useState(null);
 
@@ -27,7 +31,7 @@ const TenantRentalRequest = () => {
     }, [])
 
     useEffect(() => {
-console.log("tenantRentalRequests",tenantRentalRequests )
+        console.log("tenantRentalRequests", tenantRentalRequests)
         if (tenantRentalRequests?.length > 0) {
             let list = tenantRentalRequests.filter(el => {
                 return el?.tenantUserId === user?.userId
@@ -115,7 +119,7 @@ console.log("tenantRentalRequests",tenantRentalRequests )
                                                                                 item
                                                                             }
                                                                         }}>
-                                                                            <button className="btn btn-primary my-2">Pay Security</button>
+                                                                            <button id = "depositButton" className="btn btn-primary my-2">Pay Security</button>
                                                                         </Link>
                                                                         {/* <button onClick={() => sendRentalDepositRequest(item?.contractId)} className="btn btn-primary">Pay Security</button> */}
                                                                     </span>

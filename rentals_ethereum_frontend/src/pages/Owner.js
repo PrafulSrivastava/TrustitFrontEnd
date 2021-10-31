@@ -38,13 +38,13 @@ const Owner= () => {
                         </Link>
                     </div>
                     <div className="col-sm-4">
-                        <Link to="/owner/post-new-property" className="tile purple">
+                        <Link to="/owner/post-new-property" className="tile white">
                             <h3 className="title">Post a Property</h3>
                             <p>You can post your property using this menu</p>
                         </Link>
                     </div>
                     <div className="col-sm-4">
-                        <Link to="/owner/rental-requests" className="tile orange">
+                        <Link to="/owner/rental-requests" className="tile green">
                             <h3 className="title">Rental Requests</h3>
                             <p>List of all property agreements.</p>
                         </Link>

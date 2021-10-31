@@ -25,7 +25,8 @@ const startPayment = async ({ setError, setTxs, ether, addr, contractId , histor
     console.log({ ether, addr });
     console.log("tx", tx);
     setTxs([tx]);
-    history.push("/tenant/rental-requests");
+    let depositState = {depositResp: true, depTx: tx};
+    history.push({pathname: "/tenant/rental-requests",  depositState});
   } catch (err) {
     setError(err.message);
   }

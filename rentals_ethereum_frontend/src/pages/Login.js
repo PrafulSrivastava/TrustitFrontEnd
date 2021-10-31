@@ -134,7 +134,7 @@ function Login() {
           </button>
         </div>
         <div className="row justify-content-center align-item-center my-2">
-          <button
+          {/* <button
             style={{
               height: "60px",
               width: "400px",
@@ -146,10 +146,10 @@ function Login() {
               fontFamily: "'Verdana', sans-serif",
               boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1)",
             }}
-          >
-            <img src={GoogleIcon} alt="GoogleIcon" />
-            <span style={{ marginLeft: "10px" }}>Login/SignUp With Email</span>
-          </button>
+          > */}
+            {/* <img src={GoogleIcon} alt="GoogleIcon" /> */}
+            {/* <span style={{ marginLeft: "10px" }}>Login/SignUp With Email</span> */}
+          {/* </button> */}
         </div>
       </div>
     </div>

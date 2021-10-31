@@ -114,7 +114,7 @@ const PostPropertyNew = () => {
                 </div>
                 <form onSubmit={submit} className="g-3 needs-validation" noValidate>
                     <div className="card">
-                        <div className="card-header bg-warning">
+                        <div className="card-header green">
                             <h6 className="text-white fw-bold">Post New Property</h6>
                         </div>
                         <div className="card-body">
@@ -264,7 +264,7 @@ const PostPropertyNew = () => {
                             </div>
 
                         </div>
-                        <div className="card-footer bg-warning">
+                        <div className="card-footer red">
                             <button className="btn btn-primary text-white fw-bold" type="submit">Submit form</button>
                         </div>
                     </div>

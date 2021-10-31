@@ -86,7 +86,7 @@ const Home = () => {
                         />
                       </div>
                       <div className={"col-md-8"}>
-                        <h6 className={"card-title"}>{item?.propertyName}</h6>
+                        <h4 className={"card-title", "headings"}><b>{item?.propertyName}</b></h4>
                         <div>
                           <table className="table table-striped table-borderless">
                             <tbody>

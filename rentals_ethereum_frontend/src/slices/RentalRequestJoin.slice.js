@@ -5,7 +5,6 @@ export const fetchOwnerRentalRequestsJoin = createAsyncThunk(FETCH_OWNER_RENTAL_
     dispatch(toggleLoading());
 
     const response = await api.get(FETCH_OWNER_RENTAL_REQUEST_JOIN);
-    console.log(">>response", response.data)
     return response.data;
 });
 
