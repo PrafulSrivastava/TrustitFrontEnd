@@ -18,6 +18,7 @@ export const CREATE_DEPOSIT_RENTAL_REQUEST = BASE_URL + 'user/property/depositSe
 export const CREATE_PAY_RENTAL_REQUEST = BASE_URL + 'user/property/payrent/';
 
 export const FETCH_OWNER_RENTAL_REQUEST = BASE_URL + 'noauth/rental_request/list';
+export const FETCH_OWNER_RENTAL_REQUEST_JOIN = BASE_URL + 'user/rental_request/list';
 export const FETCH_TENANT_RENTAL_REQUEST = BASE_URL + 'noauth/rental_request/list';
 
 export const APPROVE_RENTAL_REQUEST = BASE_URL + 'user/rental_request';

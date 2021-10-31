@@ -4,20 +4,20 @@ import Navbar from '../components/NavBar';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getUser} from "../services/storage";
-import {fetchOwnerRentalRequests} from "../slices/RentalRequest.slice";
+import {fetchOwnerRentalRequestsJoin} from "../slices/RentalRequestJoin.slice";
 import ConfirmRentalRequestModal from "../components/ConfirmRentalRequestModal";
 const OwnerRentalRequest = () => {
 
     const dispatch = useDispatch();
     const [requests, setRequests] = useState([]);
-    const {ownerRentalRequests} = useSelector(state=>state?.rentalRequests);
+    const {ownerRentalRequests} = useSelector(state=>state?.rentalRequestJoin);
     const user = getUser();
 
     const [isVisible,setIsVisible] = useState(false);
     const [requestId,setRequestId] = useState('');
 
     useEffect(() => {
-        dispatch(fetchOwnerRentalRequests());
+        dispatch(fetchOwnerRentalRequestsJoin());
     }, [])
 
     useEffect(() => {
