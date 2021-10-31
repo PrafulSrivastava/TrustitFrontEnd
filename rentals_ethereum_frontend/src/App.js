@@ -13,6 +13,7 @@ import MyPropertyView from "./pages/MyPropertyView";
 import PostProperty from "./pages/PostProperty";
 import MyProperties from "./pages/MyProperties";
 import EditProperty from "./pages/EditProperty";
+import PropertyDocs from "./pages/PropertyDocs";
 import OwnerRentalRequest from "./pages/OwnerRentalRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -23,6 +24,7 @@ import PayRent from "./pages/PayRent";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Property from "./pages/Property";
+import PaySecurity from "./pages/PaySecurity";
 
 function App() {
   const dispatch = useDispatch();
@@ -72,6 +74,9 @@ function App() {
             <Route exact path="/owner/edit/property">
               <EditProperty />
             </Route>
+            <Route exact path="/owner/my-property-docs">
+              <PropertyDocs />
+            </Route>
             <Route exact path="/owner/rental-requests">
               <OwnerRentalRequest />
             </Route>
@@ -82,7 +87,11 @@ function App() {
             <Route exact path="/tenant/pay-rent">
               <PayRent />
             </Route>
-
+            
+            <Route exact path="/tenant/pay-security">
+              <PaySecurity />
+            </Route>
+            
             <Route exact path="/view/property">
               <Property />
             </Route>

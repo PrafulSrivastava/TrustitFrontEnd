@@ -121,9 +121,17 @@ const TenantRentalRequest = () => {
                                                     <td>
                                                         {
                                                             item?.requestApprovalDone === 'true' ?
-                                                                <>
+                                                                <>z
                                                                     <span className="mx-1">
-                                                                        <button onClick={() => sendRentalDepositRequest(item?.contractId)} className="btn btn-primary">Pay Security</button>
+                                                                        <Link to={{
+                                                                            pathname: "/tenant/pay-security",
+                                                                            params: {
+                                                                                item
+                                                                            }
+                                                                        }}>
+                                                                            <button className="btn btn-primary my-2">Pay Security</button>
+                                                                        </Link>
+                                                                        {/* <button onClick={() => sendRentalDepositRequest(item?.contractId)} className="btn btn-primary">Pay Security</button> */}
                                                                     </span>
                                                                     {/* <span className="mx-1">
                                                                         <button onClick={() => sendRentalPayRequest(item?.contractId)} className="btn btn-primary my-2">Pay Rent</button>

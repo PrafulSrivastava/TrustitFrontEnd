@@ -201,11 +201,15 @@ const MyProperties = () => {
                                                     className={"btn btn-success text-white fw-bold"}>View</Link>
                                             </span>
                                             <span className="mx-1">
+                                                <Link to={{ pathname: `/owner/my-property-docs`, state: item }}
+                                                    className={"btn btn-success text-white fw-bold"}>Upload Docs</Link>
+                                            </span>
+                                            {/* <span className="mx-1">
                                                 <Link to={{ pathname: `/owner/edit/property`, state: item }}
                                                     className={"btn btn-primary text-white fw-bold"}>Edit</Link>
-                                            </span>
+                                            </span> */}
                                             <span className="mx-1">
-                                                <button onClick={() => setRent(item?.propertyId)} className={"btn btn-primary text-white fw-bold"}>Set Rent</button>
+                                                <button onClick={() => setRent(item?.propertyId)} className={"btn btn-primary text-white fw-bold"}>Change Rent</button>
                                             </span>
                                         </div>
                                     </div>

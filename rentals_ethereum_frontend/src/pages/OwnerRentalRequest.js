@@ -66,10 +66,16 @@ const OwnerRentalRequest = () => {
                             <table className="table table-bordered table-hover bg-white">
                                 <thead>
                                  <tr>
-                                     <th>Request Id</th>
-                                     <th>Property Id</th>
-                                     <th>Tenant Id</th>
-                                     <th>Request Date</th>
+                                     <th>Contract Id</th>
+                                     <th>NFT Token Id</th>
+                                     <th>Property Name</th>
+                                     <th>Tenant Address</th>
+                                     <th>Request Send Date</th>
+                                     <th>Duration</th>
+                                     <th>Actual Rent Amount</th>
+                                     <th>Requested Rent Amount</th>
+                                     <th>Actual Security Deposit</th>
+                                     <th>Requested Security Deposit</th>
                                      <th>Action</th>
 
                                  </tr>
@@ -79,10 +85,16 @@ const OwnerRentalRequest = () => {
                                     requests?.length > 0 ? requests.map(item => {
                                         return (
                                             <tr key={Math.random()}>
-                                                <td>{item?.rentalRequestId}</td>
-                                                <td>{item?.propertyId}</td>
-                                                <td>{item?.tenantUserId}</td>
+                                                <td>{item?.contractId}</td>
+                                                <td>{item?.property[0].NFTTokenId}</td>
+                                                <td>{item?.property[0].propertyName}</td>
+                                                <td>{item?.tenantAddress}</td>
                                                 <td>{item?.createdAt}</td>
+                                                <td>{item?.duration} Months</td>
+                                                <td>{item?.property[0].rentAmount}</td>
+                                                <td>{item?.rentAmount}</td>
+                                                <td>{item?.property[0].securityDeposit}</td>
+                                                <td>{item?.securityDeposit}</td>
                                                 <td>
                                                     {
                                                         item?.requestApprovalDone ==='true'?'Approved':<button onClick={()=>approveRequest(isVisible,item?.rentalRequestId)} className="btn btn-info text-white fw-bold">Approve</button>

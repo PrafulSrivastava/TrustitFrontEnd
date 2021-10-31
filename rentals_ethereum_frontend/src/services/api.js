@@ -22,7 +22,7 @@ export const FETCH_TENANT_RENTAL_REQUEST = BASE_URL + 'noauth/rental_request/lis
 
 export const APPROVE_RENTAL_REQUEST = BASE_URL + 'user/rental_request';
 
-export const SET_RENT_AMOUNT = BASE_URL + 'user/property/setRent/';
+export const SET_RENT_AMOUNT = BASE_URL + 'user/property/changeRent/';
 
 export const GET_CONTRACT_DETAILS = BASE_URL + 'user/property/getContractDetails/';
 

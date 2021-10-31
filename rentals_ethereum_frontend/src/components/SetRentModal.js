@@ -16,14 +16,9 @@ const SetRentModal = ({isSetRentVisible,setIsSetRentVisible,selectedPropertyId})
     const setRentRequest = async (id)=> {
         try {
 
-            if(!securityDeposit)
+            if(!securityDeposit && !rentAmount)
             {
-                alert("Enter security deposit amount");
-                return false;
-            }
-            if(!rentAmount)
-            {
-                alert("Enter rent amount");
+                alert("Enter security deposit or rent amount");
                 return false;
             }
 
@@ -31,11 +26,12 @@ const SetRentModal = ({isSetRentVisible,setIsSetRentVisible,selectedPropertyId})
                    "securityDeposit":securityDeposit,
                    "rentAmount":rentAmount
             };
+            console.log(SET_RENT_AMOUNT+id)
             const response = await api.post(SET_RENT_AMOUNT+id,params);
             if(response.status===200)
             {
                 dispatch(fetchProperty());
-                alert("Rental updated successfully");
+                alert("Rent updated successfully");
             }
             setIsSetRentVisible(false);
         }
@@ -50,7 +46,7 @@ const SetRentModal = ({isSetRentVisible,setIsSetRentVisible,selectedPropertyId})
     return (
         <Modal show={isSetRentVisible} onHide={()=>setIsSetRentVisible(false)}>
             <Modal.Header closeButton>
-                <Modal.Title>Set Rent </Modal.Title>
+                <Modal.Title>Change Rent </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className="row my-1">
@@ -78,7 +74,7 @@ const SetRentModal = ({isSetRentVisible,setIsSetRentVisible,selectedPropertyId})
 
             <Modal.Footer>
                 <Button onClick={()=>setIsSetRentVisible(false)} variant="secondary">Cancel</Button>
-                <Button onClick={()=>setRentRequest(selectedPropertyId)} variant="primary">Set Rent</Button>
+                <Button onClick={()=>setRentRequest(selectedPropertyId)} variant="primary">Change Rent</Button>
             </Modal.Footer>
         </Modal>
     );
