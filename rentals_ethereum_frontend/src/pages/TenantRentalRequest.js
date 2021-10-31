@@ -143,7 +143,7 @@ console.log("tenantRentalRequests",tenantRentalRequests )
                                                             item?.requestApprovalDone === 'true' ?
                                                                 <>
                                                                     <span className="mx-1">
-                                                                        <button onClick={() => viewContract(item?.propertyId)} className={"btn btn-primary text-white fw-bold"}>View Contract</button>
+                                                                        <button onClick={() => viewContract(item?.contractId)} className={"btn btn-primary text-white fw-bold"}>View Contract</button>
                                                                     </span>
                                                                 </>
                                                                 :
