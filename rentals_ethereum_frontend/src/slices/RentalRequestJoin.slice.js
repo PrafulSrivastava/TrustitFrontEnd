@@ -16,6 +16,7 @@ const rentalRequestSlice = createSlice({
     initialState: {
         loading: false,
         ownerRentalRequests: null,
+        tenantRentalRequests: null
     },
     reducers: {
         toggleLoading: state => {
@@ -27,6 +28,7 @@ const rentalRequestSlice = createSlice({
         [fetchOwnerRentalRequestsJoin.fulfilled]: (state, action) => {
             state.loading = false;
             state.ownerRentalRequests = action.payload?.data;
+            state.tenantRentalRequests = action.payload?.data;
         },
     }
 });

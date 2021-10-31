@@ -4,15 +4,14 @@ import Navbar from '../components/NavBar';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../services/storage";
-import { fetchTenantRentalRequests } from "../slices/TenantRentalRequest.slice";
-import { api, CREATE_PAY_RENTAL_REQUEST, CREATE_DEPOSIT_RENTAL_REQUEST } from "../services/api";
+import { fetchOwnerRentalRequestsJoin } from "../slices/RentalRequestJoin.slice";
 import SetViewContractModal from "../components/SetViewContractModal";
 
 const TenantRentalRequest = () => {
 
     const dispatch = useDispatch();
     const [requests, setRequests] = useState([]);
-    const { tenantRentalRequests } = useSelector(state => state?.tenantRentalRequest);
+    const { tenantRentalRequests } = useSelector(state => state?.rentalRequestJoin);
     const user = getUser();
 
     const [isViewContractVisible, setIsViewContractVisible] = useState(false);
@@ -21,41 +20,14 @@ const TenantRentalRequest = () => {
     const viewContract = (propId) => {
         setSelectedPropertyId(propId);
         setIsViewContractVisible(true);
-        console.log(setIsViewContractVisible);
-
-    }
-
-    const sendRentalDepositRequest = async contractId => {
-
-        const response = await api.post(CREATE_DEPOSIT_RENTAL_REQUEST + contractId);
-
-        if (response.status === 200) {
-            alert("rent request sent successfully");
-        }
-    }
-
-    const sendRentalPayRequest = async contractId => {
-        try {
-            const response = await api.post(CREATE_PAY_RENTAL_REQUEST + contractId);
-
-            if (response.status === 200) {
-                alert("rent request sent successfully");
-            } else {
-                alert("check node api http.response:" + response.status);
-            }
-        }
-        catch (e) {
-
-            alert(e.toString());
-        }
     }
 
     useEffect(() => {
-        dispatch(fetchTenantRentalRequests());
+        dispatch(fetchOwnerRentalRequestsJoin());
     }, [])
 
     useEffect(() => {
-
+console.log("tenantRentalRequests",tenantRentalRequests )
         if (tenantRentalRequests?.length > 0) {
             let list = tenantRentalRequests.filter(el => {
                 return el?.tenantUserId === user?.userId
@@ -94,10 +66,18 @@ const TenantRentalRequest = () => {
                             <table className="table table-bordered table-hover bg-white">
                                 <thead>
                                     <tr>
-                                        <th>Request Id</th>
-                                        <th>Property Id</th>
-                                        <th>Tenant Id</th>
-                                        <th>Request Date</th>
+
+
+                                        <th>Contract Id</th>
+                                        <th>NFT Token Id</th>
+                                        <th>Property Name</th>
+                                        <th>Tenant Address</th>
+                                        <th>Request Send Date</th>
+                                        <th>Duration</th>
+                                        <th>Actual Rent Amount</th>
+                                        <th>Requested Rent Amount</th>
+                                        <th>Actual Security Deposit</th>
+                                        <th>Requested Security Deposit</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                         <th>Your Contract</th>
@@ -108,10 +88,16 @@ const TenantRentalRequest = () => {
                                         requests?.length > 0 ? requests.map(item => {
                                             return (
                                                 <tr key={Math.random()}>
-                                                    <td>{item?.rentalRequestId}</td>
-                                                    <td>{item?.propertyId}</td>
-                                                    <td>{item?.tenantUserId}</td>
+                                                    <td>{item?.contractId}</td>
+                                                    <td>{item?.property[0].NFTTokenId}</td>
+                                                    <td>{item?.property[0].propertyName}</td>
+                                                    <td>{item?.tenantAddress}</td>
                                                     <td>{item?.createdAt}</td>
+                                                    <td>{item?.duration} Months</td>
+                                                    <td>{item?.property[0].rentAmount}</td>
+                                                    <td>{item?.rentAmount}</td>
+                                                    <td>{item?.property[0].securityDeposit}</td>
+                                                    <td>{item?.securityDeposit}</td>
                                                     <td>
                                                         {
                                                             item?.requestApprovalDone === 'true' ? 'Approved' : 'Pending'
@@ -121,7 +107,7 @@ const TenantRentalRequest = () => {
                                                     <td>
                                                         {
                                                             item?.requestApprovalDone === 'true' ?
-                                                                <>z
+                                                                <>
                                                                     <span className="mx-1">
                                                                         <Link to={{
                                                                             pathname: "/tenant/pay-security",
