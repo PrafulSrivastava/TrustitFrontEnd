@@ -53,9 +53,8 @@ function Index() {
                   </Link>
                 </li>{" "}
                 <li className="nav-item">
-                  <button
+                  <button className="btn btn-success"
                     onClick={() => logout()}
-                    className="nav-link fw-bold text-danger"
                   >
                     Log Out
                   </button>
@@ -63,7 +62,7 @@ function Index() {
               </>
             ) : (
               <li className="nav-item">
-                <Link className="nav-link fw-bold" to={"/login"}>
+                <Link className="btn btn-success" to={"/login"}>
                   Login
                 </Link>
               </li>
