@@ -8,12 +8,13 @@ import { useHistory } from "react-router-dom";
 import { api, CREATE_PAY_RENTAL_REQUEST, CREATE_DEPOSIT_RENTAL_REQUEST } from "../services/api";
 
 
-const sendRentalPayRequest = async contractId => {
+const sendRentalPayRequest = async (contractId,txHash) => {
+  console.log("txHash", txHash.hash)
   try {
-      const response = await api.post(CREATE_PAY_RENTAL_REQUEST + contractId);
+      const response = await api.post(CREATE_PAY_RENTAL_REQUEST + contractId, {txHash:txHash.hash});
 
       if (response.status === 200) {
-          alert("Hurrey!!! Rent Ageement created successfully!! You can view your contract now.");
+          alert("Hurrey!!! TxHash: "+ txHash.hash);
       } else {
           alert("check node api http.response:" + response.status);
       }
@@ -41,22 +42,20 @@ const startPayment = async ({ setError, setTxs, ether, addr, contractId , histor
     console.log({ ether, addr });
     console.log("tx", tx);
     setTxs([tx]);
-    sendRentalPayRequest(contractId);
+    sendRentalPayRequest(contractId,tx);
     history.push("/tenant/rental-requests");
   } catch (err) {
     setError(err.message);
   }
 };
 
-export default function App(props) {
-  const { tenantRentalRequests } = useSelector(state => state?.tenantRentalRequest);
+export default function App() {
   const location = useLocation();
   let history = useHistory();
-
-  console.log(">>>props>", location.params.item.ownerAddress, location.params.item.rentAmount)
   const [error, setError] = useState();
   const [txs, setTxs] = useState([]);
 
+  let etherToBePaid =  (location.params.item.rentAmount +  location.params.item.securityDeposit).toString()
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -64,7 +63,7 @@ export default function App(props) {
     await startPayment({
       setError,
       setTxs,
-      ether: location.params.item.rentAmount.toString(),
+      ether: etherToBePaid,
       addr:location.params.item.ownerAddress,
       contractId: location.params.item.contractId,
       history
@@ -76,7 +75,7 @@ export default function App(props) {
       <div className="credit-card w-full lg:w-1/2 sm:w-auto shadow-lg mx-auto rounded-xl bg-white">
         <main className="mt-4 p-4">
           <h1 className="text-xl font-semibold text-gray-700 text-center">
-            Send ETH payment
+            Pay Rent+Security Deposit
           </h1>
           <div className="">
             <div className="my-3">
@@ -95,7 +94,7 @@ export default function App(props) {
                 type="text"
                 className="input input-bordered block w-full focus:ring focus:outline-none"
                 placeholder="Amount in ETH"
-                value = {location.params.item.rentAmount?location.params.item.rentAmount:""}
+                value = {location.params.item.rentAmount && location.params.item.securityDeposit ? location.params.item.rentAmount + location.params.item.securityDeposit:""}
                 readOnly
               />
             </div>

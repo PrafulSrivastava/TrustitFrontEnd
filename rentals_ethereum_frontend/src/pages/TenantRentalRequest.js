@@ -108,21 +108,22 @@ const TenantRentalRequest = () => {
                                                         }
 
                                                     </td>
+                                                    
                                                     <td>
                                                         {
-                                                            item?.requestApprovalDone === 'true' ?
+                                                            item?.requestApprovalDone === 'true'  && item?.rentAndSecurityPaid == false ?
                                                                 <>
-                                                                    <span className="mx-1">
+                                                                    {/* <span className="mx-1">
                                                                         <Link to={{
                                                                             pathname: "/tenant/pay-security",
                                                                             params: {
                                                                                 item
-                                                                            }
+                                                                            } 
                                                                         }}>
                                                                             <button id = "depositButton" className="btn btn-primary my-2">Pay Security</button>
-                                                                        </Link>
+                                                                        </Link> */}
                                                                         {/* <button onClick={() => sendRentalDepositRequest(item?.contractId)} className="btn btn-primary">Pay Security</button> */}
-                                                                    </span>
+                                                                    {/* </span> */}
                                                                     {/* <span className="mx-1">
                                                                         <button onClick={() => sendRentalPayRequest(item?.contractId)} className="btn btn-primary my-2">Pay Rent</button>
                                                                     </span> */}
@@ -134,7 +135,7 @@ const TenantRentalRequest = () => {
                                                                                 item
                                                                             }
                                                                         }}>
-                                                                            <button className="btn btn-primary my-2">Pay Rent</button>
+                                                                            <button className="btn btn-primary my-2">Pay Rent & Security</button>
                                                                         </Link>
                                                                     </div>
                                                                 </>
@@ -144,7 +145,7 @@ const TenantRentalRequest = () => {
                                                     </td>
                                                     <td>
                                                         {
-                                                            item?.requestApprovalDone === 'true' ?
+                                                            item?.requestApprovalDone === 'true' && item?.rentAndSecurityPaid == true?
                                                                 <>
                                                                     <span className="mx-1">
                                                                         <button onClick={() => viewContract(item?.contractId)} className={"btn btn-primary text-white fw-bold"}>View Contract</button>
