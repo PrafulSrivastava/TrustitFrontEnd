@@ -90,6 +90,10 @@ const Home = () => {
                         <div>
                           <table className="table table-striped table-borderless">
                             <tbody>
+                            <tr>
+                                <th>Property Type</th>
+                                <td>{item?.propertyType}</td>
+                              </tr>
                               <tr>
                                 <th>Unit No.</th>
                                 <td>{item?.unitNumber}</td>
@@ -114,14 +118,14 @@ const Home = () => {
                                 <th>One-Time Security Deposit</th>
                                 <td>{item?.securityDeposit}</td>
                               </tr>
-                              <tr>
+                              {/* <tr>
                                 <th>Inital Available date</th>
                                 <td>{item?.initialAvailableDate}</td>
-                              </tr>
-                              <tr>
+                              </tr> */}
+                              {/* <tr>
                                 <th>NFT Token Id</th>
                                 <td>{item?.NFTTokenId}</td>
-                              </tr>
+                              </tr> */}
                               <tr>
                                 <th>Pincode</th>
                                 <td>{item?.pincode}</td>
@@ -133,10 +137,10 @@ const Home = () => {
                                     : "bg-danger"
                                 }
                               >
-                                <th className="text-white">Availability</th>
+                                <th className="text-white">Available From</th>
                                 <td className="text-white">
                                   {item?.availability
-                                    ? "Available"
+                                    ? item?.initialAvailableDate
                                     : "Not Available"}
                                 </td>
                               </tr>
