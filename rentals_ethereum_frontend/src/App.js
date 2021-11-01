@@ -12,6 +12,7 @@ import PropertyView from "./pages/PropertyView";
 import MyPropertyView from "./pages/MyPropertyView";
 import PostProperty from "./pages/PostProperty";
 import MyProperties from "./pages/MyProperties";
+import MyPropertiesTenant from "./pages/MyPropertiesTenant";
 import EditProperty from "./pages/EditProperty";
 import PropertyDocs from "./pages/PropertyDocs";
 import OwnerRentalRequest from "./pages/OwnerRentalRequest";
@@ -21,6 +22,7 @@ import { getUser } from "./services/storage";
 import { setAuthUser } from "./slices/Auth.slice";
 import TenantRentalRequest from "./pages/TenantRentalRequest";
 import PayRent from "./pages/PayRent";
+import PayRentPerMonth from "./pages/PayRentPerMonth";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Property from "./pages/Property";
@@ -71,6 +73,9 @@ function App() {
             <Route exact path="/owner/my-property-list">
               <MyProperties />
             </Route>
+            <Route exact path="/owner/my-property-list-tenant">
+              <MyPropertiesTenant />
+            </Route>
             <Route exact path="/owner/edit/property">
               <EditProperty />
             </Route>
@@ -88,6 +93,10 @@ function App() {
               <PayRent />
             </Route>
             
+            <Route exact path="/tenant/pay-rent-per-month">
+              <PayRentPerMonth />
+            </Route>
+
             <Route exact path="/tenant/pay-security">
               <PaySecurity />
             </Route>

@@ -14,7 +14,7 @@ const TenantRentalRequest = () => {
     const { tenantRentalRequests } = useSelector(state => state?.rentalRequestJoin);
     const  depositResp  = useSelector(depositState => depositState);
     const user = getUser();
-    console.log(">>depositResp", depositResp)
+
     if (depositResp == true){
         document.getElementById("depositButton").disabled = true
     }

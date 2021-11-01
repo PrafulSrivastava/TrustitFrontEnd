@@ -31,14 +31,20 @@ const Tenant= () => {
                     </div>
                 </div>
                 <div className="row">
+                <div className="col-sm-4">
+                        <Link to="/owner/my-property-list-tenant" className="tile green">
+                            <h3 className="title">My Properties</h3>
+                            <p>Your Property list is here.</p>
+                        </Link>
+                    </div>
                     <div className="col-sm-4">
-                        <Link to="/tenant/property-listing" className="tile red">
+                        <Link to="/tenant/property-listing" className="tile white">
                             <h3 className="title">Search Properties</h3>
                             <p>Checkout listings in our website.</p>
                         </Link>
                     </div>
                     <div className="col-sm-4">
-                        <Link to="/tenant/rental-requests" className="tile white">
+                        <Link to="/tenant/rental-requests" className="tile green">
                             <h3 className="title">Rental Request</h3>
                             <p>List of all property agreements.</p>
                         </Link>
