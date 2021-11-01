@@ -90,6 +90,20 @@ const Home = () => {
                         <div>
                           <table className="table table-striped table-borderless">
                             <tbody>
+                            <tr
+                                className={
+                                  item?.KYC
+                                    ? "bg-success"
+                                    : "bg-warning"
+                                }
+                              >
+                               
+                                <th className="text-white">
+                                  {item?.KYC
+                                    ? "Property Verified By Auditor"
+                                    : "Property Not Verified By Auditor Yet"}
+                                </th>
+                              </tr>
                             <tr>
                                 <th>Property Type</th>
                                 <td>{item?.propertyType}</td>
