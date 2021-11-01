@@ -210,7 +210,7 @@ const PostPropertyNew = () => {
                                     <label htmlFor="rentAmount" className="form-label">RentAmount</label>
                                     <input type="number" className="form-control" name={"rentAmount"} id="rentAmount"
                                         onChange={e => setRentAmount(parseInt(e.target.value))}
-                                        required />
+                                        required placeholder="in ETH"/>
                                     <div className="invalid-feedback">
                                         Please enter rent amount
                                     </div>
@@ -220,10 +220,10 @@ const PostPropertyNew = () => {
 
                             <div className="row my-1">
                                 <div className="col-md-4">
-                                    <label htmlFor="securityDeposit" className="form-label">securityDeposit</label>
+                                    <label htmlFor="securityDeposit" className="form-label">Security Deposit</label>
                                     <input type="number" className="form-control" name={"securityDeposit"} id="securityDeposit"
                                         onChange={e => setSecurityDeposit(parseInt(e.target.value))}
-                                        required />
+                                        required placeholder="in ETH" />
                                     <div className="invalid-feedback">
                                         Please enter security amount
                                     </div>

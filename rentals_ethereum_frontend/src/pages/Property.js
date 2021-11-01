@@ -2,10 +2,20 @@ import React, { useState } from 'react';
 import '../assets/css/my-property.css';
 import Navbar from "../components/NavBar";
 import { Link, useLocation } from "react-router-dom";
-import { api, CREATE_RENTAL_REQUEST } from "../services/api";
 import LoginModal from "../components/LoginModal";
 import { useSelector } from "react-redux";
+import RentalRequestModal from "../components/RentalRequestModal";
+
+
 const Property = () => {
+
+    const [isRentalRequestModalVisible, setIsRentalRequestModalVisible] = useState(false);
+
+
+    const sendRentalRequest = async () => {
+        setIsRentalRequestModalVisible(true);
+    }
+
     let location = useLocation();
     const [item] = useState(location.state);
 
@@ -13,23 +23,23 @@ const Property = () => {
 
     const { user } = useSelector(state => state?.auth);
 
-    const sendRentalRequest = async propertyId => {
+    // const sendRentalRequest = async propertyId => {
 
-        try {
-            const response = await api.post(CREATE_RENTAL_REQUEST, { propertyId });
-            if (response.status === 200) {
-                alert("rent request sent successfully");
-            }
-        }
-        catch (e) {
-            if (!user) {
-                setIsVisible(true);
-            }
-        }
+    //     try {
+    //         const response = await api.post(CREATE_RENTAL_REQUEST, { propertyId });
+    //         if (response.status === 200) {
+    //             alert("rent request sent successfully");
+    //         }
+    //     }
+    //     catch (e) {
+    //         if (!user) {
+    //             setIsVisible(true);
+    //         }
+    //     }
 
 
 
-    }
+    // }
 
     return (
         <div>
@@ -123,6 +133,9 @@ const Property = () => {
                 </div>
             </div>
             <LoginModal isVisible={isVisible} setIsVisible={setIsVisible} propertyId={item?.propertyId} />
+            {
+               isRentalRequestModalVisible && <RentalRequestModal isVisible={isRentalRequestModalVisible} setIsVisible={setIsRentalRequestModalVisible} propId={item?.propertyId} />
+            }
         </div>
     );
 }

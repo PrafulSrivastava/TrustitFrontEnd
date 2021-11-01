@@ -95,7 +95,7 @@ const PropertyView = () => {
                             <div className="col-md-4">
                                 <div className="my-5">
                                     {
-                                        item?.availability && <button onClick={() => sendRentalRequest(item?.propertyId)} className="btn btn-success btn-lg">Sent Rental Request</button>
+                                        item?.availability && <button onClick={() => sendRentalRequest(item?.propertyId)} className="btn btn-success btn-lg">Send Rental Request</button>
                                     }
                                 </div>
                             </div>

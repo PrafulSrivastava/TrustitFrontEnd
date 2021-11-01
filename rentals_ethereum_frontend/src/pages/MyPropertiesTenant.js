@@ -8,19 +8,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProperty } from "../slices/Property.slice";
 import { getUser } from "../services/storage";
 import SetRentModal from "../components/SetRentModal";
-import { api, SET_PROPERTY_STATUS_IN_ACTIVE, SET_PROPERTY_STATUS_ACTIVE } from "../services/api";
+
+
 
 const MyProperties = () => {
 
+    const user = getUser();
     const dispatch = useDispatch();
     const [myProperties, setMyProperties] = useState([]);
     const { properties } = useSelector(state => state?.properties);
 
     const [isSetRentVisible, setIsSetRentVisible] = useState(false);
     const [selectedPropertyId, setSelectedPropertyId] = useState(null);
-
-
-    const user = getUser();
 
     useEffect(() => {
 
@@ -32,7 +31,7 @@ const MyProperties = () => {
 
         if (properties?.length > 0) {
             let list = properties.filter(el => {
-                return el?.userId?.toString() === user?.userId?.toString()
+                return el?.tenantUserId?.toString() === user?.userId?.toString()
             });
 
             setMyProperties(list);
@@ -49,43 +48,6 @@ const MyProperties = () => {
         dispatch(fetchProperty());
     }
 
-    const payRent = (propId) => {
-        setSelectedPropertyId(propId);
-        setIsSetRentVisible(true);
-        console.log(isSetRentVisible);
-
-    }
-
-    const changePropertyStatus = async (action, id) => {
-        try {
-
-            let URL;
-            if (action === "activate") {
-                URL = SET_PROPERTY_STATUS_ACTIVE;
-            }
-
-            if (action === "de-activate") {
-                URL = SET_PROPERTY_STATUS_IN_ACTIVE;
-            }
-
-
-            const response = await api.post(URL + id);
-            if (response.status === 200) {
-                if (action === "activate") {
-                    alert("Property status active");
-                }
-
-                if (action === "de-activate") {
-                    alert("Property status in-active");
-                }
-                dispatch(fetchProperty());
-            }
-        }
-        catch (e) {
-
-            alert(e.toString());
-        }
-    }
 
     return (
         <div>
@@ -150,6 +112,20 @@ const MyProperties = () => {
                                                 <div>
                                                     <table className="table table-striped table-borderless">
                                                         <tbody>
+                                                            <tr
+                                                                className={
+                                                                    item?.KYC
+                                                                        ? "bg-success"
+                                                                        : "bg-warning"
+                                                                }
+                                                            >
+
+                                                                <th className="text-white">
+                                                                    {item?.KYC
+                                                                        ? "Property Verified By Auditor"
+                                                                        : "Property Not Verified By Auditor Yet"}
+                                                                </th>
+                                                            </tr>
                                                             <tr>
                                                                 <th>Unit No.</th>
                                                                 <td>{item?.unitNumber}</td>
@@ -186,10 +162,10 @@ const MyProperties = () => {
                                                                 <th>NFT Token Id</th>
                                                                 <td>{item?.NFTTokenId}</td>
                                                             </tr>
-                                                            <tr className={item?.availability ? 'bg-danger' : 'bg-success'}>
+                                                            {/* <tr className={item?.availability ? 'bg-danger' : 'bg-success'}>
                                                                 <th className="text-white">Availability</th>
                                                                 <td className="text-white">{item?.availability ? 'Not Rented' : 'Rented'}</td>
-                                                            </tr>
+                                                            </tr> */}
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -209,16 +185,16 @@ const MyProperties = () => {
                                                     className={"btn btn-primary text-white fw-bold"}>Edit</Link>
                                             </span> */}
                                             <span className="mx-1">
-                                               
-                                                    <Link to={{
-                                                        pathname: "/tenant/pay-rent-per-month",
-                                                        params: {
-                                                            item
-                                                        }
-                                                    }}>
-                                                        <button className="btn btn-primary my-2">Pay Rent</button>
-                                                    </Link>
-                                               
+
+                                                <Link to={{
+                                                    pathname: "/tenant/pay-rent-per-month",
+                                                    params: {
+                                                        item
+                                                    }
+                                                }}>
+                                                    <button className="btn btn-primary my-2">Pay Rent</button>
+                                                </Link>
+
                                                 {/* <button onClick={() => payRent(item?.propertyId)} className={"btn btn-primary text-white fw-bold"}>Pay Rent</button> */}
                                             </span>
                                         </div>
