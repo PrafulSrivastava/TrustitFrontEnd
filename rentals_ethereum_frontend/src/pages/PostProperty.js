@@ -262,7 +262,7 @@ const PostPropertyNew = () => {
 
                         </div>
                         <div className="card-footer red">
-                            <button className="btn btn-primary text-white fw-bold" type="submit">Submit form</button>
+                            <button className="btn btn-success text-white fw-bold" type="submit">Submit form</button>
                         </div>
                     </div>
                 </form>
