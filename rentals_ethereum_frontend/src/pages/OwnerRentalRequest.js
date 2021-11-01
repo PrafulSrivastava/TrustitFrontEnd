@@ -72,10 +72,10 @@ const OwnerRentalRequest = () => {
                                      <th>Tenant Address</th>
                                      <th>Request Send Date</th>
                                      <th>Duration</th>
-                                     <th>Actual Rent Amount</th>
-                                     <th>Requested Rent Amount</th>
-                                     <th>Actual Security Deposit</th>
-                                     <th>Requested Security Deposit</th>
+                                     <th>Actual Rent Amount (ETH)</th>
+                                     <th>Requested Rent Amount (ETH)</th>
+                                     <th>Actual Security Deposit (ETH)</th>
+                                     <th>Requested Security Deposit (ETH)</th>
                                      <th>Action</th>
 
                                  </tr>
