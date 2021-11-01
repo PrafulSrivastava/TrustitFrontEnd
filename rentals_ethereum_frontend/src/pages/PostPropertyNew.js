@@ -129,7 +129,6 @@ const PostPropertyNew = () => {
                                 <div className="col-md-4">
                                     <label htmlFor="bathrooms" className="form-label">Bedrooms</label>
                                     <div className="input-group has-validation">
-                                        <span className="input-group-text" id="inputGroupPrepend">@</span>
                                         <input type="text" className="form-control" name={"bathrooms"} id="bathrooms"
                                                aria-describedby="inputGroupPrepend"
                                                onChange={e => setBathrooms(parseInt(e.target.value))}
@@ -144,7 +143,6 @@ const PostPropertyNew = () => {
                                 <div className="col-md-4">
                                     <label htmlFor="unitNumber" className="form-label">Unit No</label>
                                     <div className="input-group has-validation">
-                                        <span className="input-group-text">@</span>
                                         <input type="text" className="form-control" name="unitNumber" id="unitNumber"
                                                aria-describedby="inputGroupPrepend"
                                                onChange={e => setUnitNumber(e.target.value)}
@@ -157,7 +155,6 @@ const PostPropertyNew = () => {
                                 <div className="col-md-4">
                                     <label htmlFor="parking" className="form-label">Parking</label>
                                     <div className="input-group has-validation">
-                                        <span className="input-group-text">@</span>
                                         <input type="text" className="form-control" name="parking" id="parking"
                                                onChange={e => setParking(parseInt(e.target.value))}
                                                required/>
