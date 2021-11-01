@@ -135,10 +135,10 @@ const MyProperties = () => {
                                 <div key={Math.random().toString()} className={"col col-md-4"}>
                                     <div className={"card my-2"}>
                                         <div className={"card-header text-end"}>
-                                            <span>
+                                            {/* <span>
                                                 <button onClick={() => changePropertyStatus('activate', item?.propertyId)} className={"btn btn-success mx-1"}>Activate</button>
                                                 <button onClick={() => changePropertyStatus('de-activate', item?.propertyId)} className={"btn btn-danger mx-1"}>De-Activate</button>
-                                            </span>
+                                            </span> */}
 
                                         </div>
                                         <div className={"card-body row"}>

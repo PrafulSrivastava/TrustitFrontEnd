@@ -250,7 +250,6 @@ const PostPropertyNew = () => {
                                         <option value="ApartmentAndUnit">Apartment And Unit</option>
                                         <option value="Townhouse">Townhouse</option>
                                         <option value="Villa">Villa</option>
-                                        <option value="BlockOfUnits">Block Of Units</option>
                                         <option value="RetirementLiving">RetirementLiving</option>
                                     </select>
                                     <div className="invalid-feedback">
