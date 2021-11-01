@@ -245,6 +245,7 @@ const PostPropertyNew = () => {
                                 <div className="col-md-4">
                                     <label htmlFor="propertyType" className="form-label">Property Type</label>
                                     <select className="form-control" name="PropertyType" id="PropertyType" onChange={e => setPropertyType(e.target.value)}>
+                                        <option value="House" hidden>Select</option>
                                         <option value="House">House</option>
                                         <option value="ApartmentAndUnit">Apartment And Unit</option>
                                         <option value="Townhouse">Townhouse</option>

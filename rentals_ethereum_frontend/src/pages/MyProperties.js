@@ -72,11 +72,11 @@ const MyProperties = () => {
             const response = await api.post(URL + id);
             if (response.status === 200) {
                 if (action === "activate") {
-                    alert("Property status active");
+                    alert("Property Activated");
                 }
 
                 if (action === "de-activate") {
-                    alert("Property status in-active");
+                    alert("Property Deactivated");
                 }
                 dispatch(fetchProperty());
             }

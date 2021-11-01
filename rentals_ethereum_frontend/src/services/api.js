@@ -11,6 +11,7 @@ export const UPDATE_USER_URL = BASE_URL + 'user';
 export const FETCH_PROPERTY_LIST = BASE_URL + 'noauth/property/list';
 
 export const CREATE_NEW_PROPERTY = BASE_URL + 'user/property';
+export const UPLOAD_DOCS = BASE_URL + 'images';
 
 export const CREATE_RENTAL_REQUEST = BASE_URL + 'user/rental_request';
 
@@ -44,6 +45,7 @@ export const api = {
         return axios.get(url, config);
     },
     post: async (url, params) => {
+        
         const token = getToken();
         let config = {
             method: 'post',
@@ -52,7 +54,7 @@ export const api = {
                 'x-public-key': `${token}`,
                 'Access-Control-Allow-Origin':'*',
             },
-            data: params,
+            data: params
         };
         return axios(config);
     },
