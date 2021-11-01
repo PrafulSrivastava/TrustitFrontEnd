@@ -6,6 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getUser} from "../services/storage";
 import {fetchOwnerRentalRequestsJoin} from "../slices/RentalRequestJoin.slice";
 import ConfirmRentalRequestModal from "../components/ConfirmRentalRequestModal";
+import SetViewContractModal from "../components/SetViewContractModal";
+
 const OwnerRentalRequest = () => {
 
     const dispatch = useDispatch();
@@ -15,6 +17,14 @@ const OwnerRentalRequest = () => {
 
     const [isVisible,setIsVisible] = useState(false);
     const [requestId,setRequestId] = useState('');
+    const [isViewContractVisible, setIsViewContractVisible] = useState(false);
+    const [selectedPropertyId, setSelectedPropertyId] = useState(null);
+
+    const viewContract = (propId) => {
+        setSelectedPropertyId(propId);
+        setIsViewContractVisible(true);
+    }
+
 
     useEffect(() => {
         dispatch(fetchOwnerRentalRequestsJoin());
@@ -77,6 +87,7 @@ const OwnerRentalRequest = () => {
                                      <th>Actual Security Deposit (ETH)</th>
                                      <th>Requested Security Deposit (ETH)</th>
                                      <th>Action</th>
+                                     <th>Rent Agreement</th>
 
                                  </tr>
                                 </thead>
@@ -101,7 +112,12 @@ const OwnerRentalRequest = () => {
                                                     }
 
                                                 </td>
+                                                <td>
+                                                    {
+                                                        item?.rentAndSecurityPaid ? <button onClick={() => viewContract(item?.contractId)} className={"btn btn-primary text-white fw-bold"}>View Contract</button> : "--"
+                                                    }
 
+                                                </td>
 
                                             </tr>
                                         )
@@ -124,7 +140,10 @@ const OwnerRentalRequest = () => {
             </div>
             {
                 isVisible && <ConfirmRentalRequestModal requestId={requestId} isVisible={isVisible} setIsVisible={setIsVisible}/>
-
+                
+            }
+             {
+                isViewContractVisible && <SetViewContractModal isViewContractVisible={isViewContractVisible} setIsViewContractVisible={setIsViewContractVisible} selectedPropertyId={selectedPropertyId} />
             }
 
         </div>
