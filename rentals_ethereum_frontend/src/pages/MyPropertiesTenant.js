@@ -176,10 +176,10 @@ const MyProperties = () => {
                                                 <Link to={{ pathname: `/owner/my-property-view`, state: item }}
                                                     className={"btn btn-success text-white fw-bold"}>View</Link>
                                             </span>
-                                            <span className="mx-1">
+                                            {/* <span className="mx-1">
                                                 <Link to={{ pathname: `/owner/my-property-docs`, state: item }}
                                                     className={"btn btn-success text-white fw-bold"}>View Docs</Link>
-                                            </span>
+                                            </span> */}
                                             {/* <span className="mx-1">
                                                 <Link to={{ pathname: `/owner/edit/property`, state: item }}
                                                     className={"btn btn-primary text-white fw-bold"}>Edit</Link>

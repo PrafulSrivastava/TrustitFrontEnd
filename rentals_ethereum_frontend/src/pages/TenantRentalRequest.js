@@ -31,9 +31,7 @@ const TenantRentalRequest = () => {
     }, [])
 
     useEffect(() => {
-        console.log(":::::", tenantRentalRequests)
         if (tenantRentalRequests?.length > 0) {
-            console.log("userId",user?.userId );
             let list = tenantRentalRequests.filter(el => {
                 return el?.tenantUserId === user?.userId
             });

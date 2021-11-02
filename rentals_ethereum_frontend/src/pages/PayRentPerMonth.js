@@ -5,15 +5,15 @@ import TxList from "./TxList";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { useHistory } from "react-router-dom";
-import { api, CREATE_PAY_RENTAL_REQUEST, CREATE_DEPOSIT_RENTAL_REQUEST } from "../services/api";
+import { api, PAY_RENT_PER_MONTH } from "../services/api";
 
 
-const sendRentalPayRequest = async contractId => {
+const payRentForMonth = async (propertyId,tx) => {
   try {
-      const response = await api.post(CREATE_PAY_RENTAL_REQUEST + contractId);
+      const response = await api.post(PAY_RENT_PER_MONTH + "/" + propertyId);
 
       if (response.status === 200) {
-          alert("Hurrey!!! Rent Ageement created successfully!! You can view your contract now.");
+          alert("Rent Payment successful! "+ "TxHash: "+ tx.hash);
       } else {
           alert("check node api http.response:" + response.status);
       }
@@ -24,7 +24,7 @@ const sendRentalPayRequest = async contractId => {
   }
 }
 
-const startPayment = async ({ setError, setTxs, ether, addr, contractId , history}) => {
+const startPayment = async ({ setError, setTxs, ether, addr, propertyId , history}) => {
 
   try {
     if (!window.ethereum)
@@ -38,11 +38,9 @@ const startPayment = async ({ setError, setTxs, ether, addr, contractId , histor
       to: addr,
       value: ethers.utils.parseEther(ether)
     });
-    console.log({ ether, addr });
-    console.log("tx", tx);
     setTxs([tx]);
-    // sendRentalPayRequest(contractId);
-    history.push("/tenant/rental-requests");
+    payRentForMonth(propertyId, tx);
+    history.push("/owner/my-property-list-tenant");
   } catch (err) {
     setError(err.message);
   }
@@ -63,7 +61,7 @@ export default function App() {
       setTxs,
       ether: location.params.item.rentAmount.toString(),
       addr:location.params.item.ownerAddress,
-      contractId: location.params.item.contractId,
+      propertyId: location.params.item.propertyId,
       history
     });
   };
@@ -76,17 +74,17 @@ export default function App() {
             Pay Rent
           </h1>
           <div className="">
-          <div className="my-3">
+          <div className="my-3">For Month:  
               <input
                 name="rent"
                 type="text"
                 className="input input-bordered block w-full focus:ring focus:outline-none"
                 placeholder="For month"
-                value = {location.params.item.rentAmount?location.params.item.rentAmount:""}
+                value = {location.params.item.rentToBePaid?location.params.item.rentToBePaid:""}
                 readOnly
               />
             </div>
-            <div className="my-3">
+            <div className="my-3">To Address: 
               <input
                 type="text"
                 name="addr"
@@ -96,7 +94,7 @@ export default function App() {
                 readOnly
               />
             </div>
-            <div className="my-3">
+            <div className="my-3">Rent Amount: 
               <input
                 name="ether"
                 type="text"

@@ -14,7 +14,7 @@ export const CREATE_NEW_PROPERTY = BASE_URL + 'user/property';
 export const UPLOAD_DOCS = BASE_URL + 'images';
 
 export const CREATE_RENTAL_REQUEST = BASE_URL + 'user/rental_request';
-
+export const PAY_RENT_PER_MONTH = BASE_URL + 'user/property/payPerMonthRent';
 export const CREATE_DEPOSIT_RENTAL_REQUEST = BASE_URL + 'user/property/depositSecurity/';
 export const CREATE_PAY_RENTAL_REQUEST = BASE_URL + 'user/property/payrent/';
 
