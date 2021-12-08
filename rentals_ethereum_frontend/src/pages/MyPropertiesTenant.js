@@ -122,22 +122,22 @@ const MyProperties = () => {
 
                                                                 <th className="text-white">
                                                                     {item?.KYC
-                                                                        ? "Property Verified By Auditor"
-                                                                        : "Property Not Verified By Auditor Yet"}
+                                                                        ? "Product Verified By Auditor"
+                                                                        : "Product Not Verified By Auditor Yet"}
                                                                 </th>
                                                             </tr>
                                                             <tr>
                                                                 <th>Unit No.</th>
                                                                 <td>{item?.unitNumber}</td>
                                                             </tr>
-                                                            <tr>
+                                                            {/* <tr>
                                                                 <th>Bedrooms</th>
                                                                 <td>{item?.bathrooms}</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Parking</th>
                                                                 <td>{item?.parking}</td>
-                                                            </tr>
+                                                            </tr> */}
                                                             <tr>
                                                                 <th>Location</th>
                                                                 <td>{item?.location}</td>

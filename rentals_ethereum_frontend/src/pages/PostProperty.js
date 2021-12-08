@@ -25,21 +25,21 @@ const PostPropertyNew = () => {
     const submit = async (e) => {
         e.preventDefault();
         if (!propertyName?.length) {
-            alert("Please enter property name");
+            alert("Please enter product name");
             return false;
         }
-        if (!rooms) {
-            alert("Please enter no of rooms");
-            return false;
-        }
-        if (!bathrooms) {
-            alert("Please enter  no of bathrooms");
-            return false;
-        }
-        if (!parking) {
-            alert("Please enter no of parking");
-            return false;
-        }
+        // if (!rooms) {
+        //     alert("Please enter no of rooms");
+        //     return false;
+        // }
+        // if (!bathrooms) {
+        //     alert("Please enter  no of bathrooms");
+        //     return false;
+        // }
+        // if (!parking) {
+        //     alert("Please enter no of parking");
+        //     return false;
+        // }
         if (!unitNumber) {
             alert("Please enter unit number");
             return false;
@@ -53,7 +53,7 @@ const PostPropertyNew = () => {
             return false;
         }
         if (!propertyType) {
-            alert("Please enter property type");
+            alert("Please enter Product Type");
             return false;
         }
         if (!rentAmount) {
@@ -72,10 +72,10 @@ const PostPropertyNew = () => {
 
         const params = {
             "propertyName": propertyName,
-            "rooms": rooms,
-            "bathrooms": bathrooms,
+            // "rooms": rooms,
+            // "bathrooms": bathrooms,
             "unitNumber": unitNumber,
-            "parking": parking,
+            // "parking": parking,
             "location": location,
             "pincode": pincode?.toString(),
             "initialAvailableDate": initialAvailableDate,
@@ -89,7 +89,7 @@ const PostPropertyNew = () => {
             const response = await api.post(CREATE_NEW_PROPERTY, params);
             if (response.status === 200) {
                 dispatch(fetchProperty());
-                alert('property created successfully');
+                alert('Product created successfully');
 
             }
         }
@@ -115,32 +115,32 @@ const PostPropertyNew = () => {
                 <form onSubmit={submit} className="g-3 needs-validation" noValidate>
                     <div className="card">
                         <div className="card-header green">
-                            <h6 className="text-white fw-bold">Post New Property</h6>
+                            <h6 className="text-white fw-bold">Post New Vehicle</h6>
                         </div>
                         <div className="card-body">
 
                             <div className="row my-1">
                                 <div className="col-md-8">
-                                    <label htmlFor="propertyName" className="form-label">Property Name</label>
+                                    <label htmlFor="propertyName" className="form-label">Vehicle Name</label>
                                     <input type="text" className="form-control" name="propertyName" id="propertyName"
 
                                         onChange={e => setPropertyName(e.target.value)} required />
                                     <div className="invalid-feedback">
-                                        Please enter property name
+                                        Please enter Vehicle name
                                     </div>
                                 </div>
                             </div>
                             <div className="row my-1">
                                 <div className="col-md-4">
-                                    <label htmlFor="rooms" className="form-label">No. Of Rooms</label>
+                                    <label htmlFor="rooms" className="form-label">No. Of Seats</label>
                                     <input type="number" className="form-control" name={"rooms"} id="rooms"
                                         onChange={e => setRooms(parseInt(e.target.value))}
                                         required />
                                     <div className="invalid-feedback">
-                                        Please enter nos of room.
+                                        Please enter nos of seat.
                                     </div>
                                 </div>
-                                <div className="col-md-4">
+                                {/* <div className="col-md-4">
                                     <label htmlFor="bathrooms" className="form-label">Bedrooms</label>
                                     <div className="input-group has-validation">
                                         <input type="number" className="form-control" name={"bathrooms"} id="bathrooms"
@@ -151,7 +151,7 @@ const PostPropertyNew = () => {
                                             Please enter no of bedrooms
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="row">
                                 <div className="col-md-4">
@@ -166,7 +166,7 @@ const PostPropertyNew = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-4">
+                                {/* <div className="col-md-4">
                                     <label htmlFor="parking" className="form-label">Parking</label>
                                     <div className="input-group has-validation">
                                         <input type="number" className="form-control" name="parking" id="parking"
@@ -176,7 +176,7 @@ const PostPropertyNew = () => {
                                             Please enter no of parking.
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
 
                             <div className="row my-1">
@@ -243,14 +243,14 @@ const PostPropertyNew = () => {
                                     </div>
                                 </div>
                                 <div className="col-md-4">
-                                    <label htmlFor="propertyType" className="form-label">Property Type</label>
+                                    <label htmlFor="propertyType" className="form-label">Product Type</label>
                                     <select className="form-control" name="PropertyType" id="PropertyType" onChange={e => setPropertyType(e.target.value)}>
-                                        <option value="House" hidden>Select</option>
-                                        <option value="House">House</option>
-                                        <option value="ApartmentAndUnit">Apartment And Unit</option>
-                                        <option value="Townhouse">Townhouse</option>
-                                        <option value="Villa">Villa</option>
-                                        <option value="RetirementLiving">RetirementLiving</option>
+                                        <option value="Van" hidden>Select</option>
+                                        <option value="Bus">Bus</option>
+                                        <option value="Van">Van</option>
+                                        <option value="Car">Car</option>
+                                        <option value="SUV">SUV</option>
+                                        <option value="Ambulance">Ambulance</option>
                                     </select>
                                     <div className="invalid-feedback">
                                         Please enter initial available date

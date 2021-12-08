@@ -21,21 +21,21 @@ const PostPropertyNew = () => {
     const submit = async (e) => {
         e.preventDefault();
         if (!propertyName?.length) {
-            alert("Please enter property name");
+            alert("Please enter Product name");
             return false;
         }
-        if (!rooms) {
-            alert("Please enter no of rooms");
-            return false;
-        }
-        if (!bathrooms) {
-            alert("Please enter  no of bathrooms");
-            return false;
-        }
-        if (!parking) {
-            alert("Please enter no of parking");
-            return false;
-        }
+        // if (!rooms) {
+        //     alert("Please enter no of rooms");
+        //     return false;
+        // }
+        // if (!bathrooms) {
+        //     alert("Please enter  no of bathrooms");
+        //     return false;
+        // }
+        // if (!parking) {
+        //     alert("Please enter no of parking");
+        //     return false;
+        // }
         if (!unitNumber) {
             alert("Please enter unit number");
             return false;
@@ -49,7 +49,7 @@ const PostPropertyNew = () => {
             return false;
         }
         if (!propertyType) {
-            alert("Please enter property type");
+            alert("Please enter Product Type");
             return false;
         }
 
@@ -59,10 +59,10 @@ const PostPropertyNew = () => {
 
         const params = {
             "propertyName" : propertyName,
-            "rooms" : rooms,
-            "bathrooms" : bathrooms,
+            // "rooms" : rooms,
+            // "bathrooms" : bathrooms,
             "unitNumber" : unitNumber,
-            "parking" : parking,
+            // "parking" : parking,
             "location" : location,
             "pincode" : pincode?.toString(),
             "initialAvailableDate" : initialAvailableDate,
@@ -74,7 +74,7 @@ const PostPropertyNew = () => {
             if(response.status===200)
             {
                 dispatch(fetchProperty());
-                alert('property created successfully');
+                alert('Product created successfully');
 
             }
         }
@@ -107,12 +107,12 @@ const PostPropertyNew = () => {
 
                             <div className="row my-1">
                                 <div className="col-md-8">
-                                    <label htmlFor="propertyName" className="form-label">Property Name</label>
+                                    <label htmlFor="propertyName" className="form-label">Product Name</label>
                                     <input type="text" className="form-control" name="propertyName" id="propertyName"
 
                                            onChange={e => setPropertyName(e.target.value)} required/>
                                     <div className="invalid-feedback">
-                                        Please enter property name
+                                        Please enter Product name
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@ const PostPropertyNew = () => {
                                         Please enter nos of room.
                                     </div>
                                 </div>
-                                <div className="col-md-4">
+                                {/* <div className="col-md-4">
                                     <label htmlFor="bathrooms" className="form-label">Bedrooms</label>
                                     <div className="input-group has-validation">
                                         <input type="text" className="form-control" name={"bathrooms"} id="bathrooms"
@@ -137,7 +137,7 @@ const PostPropertyNew = () => {
                                            Please enter no of bedrooms
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="row">
                                 <div className="col-md-4">
@@ -152,7 +152,7 @@ const PostPropertyNew = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-4">
+                                {/* <div className="col-md-4">
                                     <label htmlFor="parking" className="form-label">Parking</label>
                                     <div className="input-group has-validation">
                                         <input type="text" className="form-control" name="parking" id="parking"
@@ -162,7 +162,7 @@ const PostPropertyNew = () => {
                                            Please enter no of parking.
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
 
                             <div className="row my-1">
@@ -203,7 +203,7 @@ const PostPropertyNew = () => {
                                 </div>
 
                                 <div className="col-md-4">
-                                    <label htmlFor="propertyType" className="form-label">Property Type</label>
+                                    <label htmlFor="propertyType" className="form-label">Product Type</label>
                                     <input type="text" className="form-control" name={"propertyType"} id="propertyType"
                                            onChange={e => setPropertyType(parseInt(e.target.value))}
                                            required/>

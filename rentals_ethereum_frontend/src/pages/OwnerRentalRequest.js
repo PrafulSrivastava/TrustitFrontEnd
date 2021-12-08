@@ -78,7 +78,7 @@ const OwnerRentalRequest = () => {
                                  <tr>
                                      <th>Contract Id</th>
                                      <th>NFT Token Id</th>
-                                     <th>Property Name</th>
+                                     <th>Product Name</th>
                                      <th>Tenant Address</th>
                                      <th>Request Send Date</th>
                                      <th>Duration</th>

@@ -40,7 +40,7 @@ const Home = () => {
             </nav>
           </div>
         </div>
-        <h4 className={"text-white fw-bold"}>Property Listing</h4>
+        <h4 className={"text-white fw-bold"}>Vehicle Listing</h4>
         <div className="row">
           <div className="col-md-4">
             <div className="input-group mb-3">
@@ -100,26 +100,26 @@ const Home = () => {
                                
                                 <th className="text-white">
                                   {item?.KYC
-                                    ? "Property Verified By Auditor"
-                                    : "Property Not Verified By Auditor Yet"}
+                                    ? "Product Verified By Auditor"
+                                    : "Product Not Verified By Auditor Yet"}
                                 </th>
                               </tr>
                             <tr>
-                                <th>Property Type</th>
+                                <th>Product Type</th>
                                 <td>{item?.propertyType}</td>
                               </tr>
                               <tr>
                                 <th>Unit No.</th>
                                 <td>{item?.unitNumber}</td>
                               </tr>
-                              <tr>
+                              {/* <tr>
                                 <th>Bedrooms</th>
                                 <td>{item?.bathrooms}</td>
-                              </tr>
-                              <tr>
+                              </tr> */}
+                              {/* <tr>
                                 <th>Parking</th>
                                 <td>{item?.parking}</td>
-                              </tr>
+                              </tr> */}
                               <tr>
                                 <th>Location</th>
                                 <td>{item?.location}</td>

@@ -41,7 +41,7 @@ function Index() {
     <nav className="navbar navbar-expand-lg navbar-light mx-0">
       <div className="container">
         <Link className="navbar-brand" to={"/"}>
-         <a href="/"> Crypto Properties </a>
+         <a href="/"> Trusted Products </a>
         </Link>
         <div className="collapse navbar-collapse" id="navbarToggle">
           <ul className="navbar-nav mr-auto">

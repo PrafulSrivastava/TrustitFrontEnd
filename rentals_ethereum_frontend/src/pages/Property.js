@@ -69,7 +69,7 @@ const Property = () => {
                                             <th>Unit No.</th>
                                             <td>{item?.unitNumber}</td>
                                         </tr>
-                                        <tr>
+                                        {/* <tr>
                                             <th>Rooms</th>
                                             <td>{item?.rooms}</td>
                                         </tr>
@@ -80,7 +80,7 @@ const Property = () => {
                                         <tr>
                                             <th>Parking</th>
                                             <td>{item?.parking}</td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <th>Location</th>
                                             <td>{item?.location}</td>
@@ -94,7 +94,7 @@ const Property = () => {
                                             <td>{item?.initialAvailableDate}</td>
                                         </tr>
                                         <tr>
-                                            <th>Property Type</th>
+                                            <th>Product Type</th>
                                             <td>{item?.propertyType}</td>
                                         </tr>
                                         <tr>

@@ -84,7 +84,7 @@ const PropertyDocs = () => {
                             <ol className="breadcrumb text-white fw-bold">
                                 <li className="breadcrumb-item"><Link className="text-white fw-bold" to="/">Home</Link></li>
                                 <li className="breadcrumb-item"><Link className="text-white fw-bold" to="/owner">Owner</Link></li>
-                                <li className="breadcrumb-item"><Link className="text-white fw-bold" to="/owner/my-property-list">Property Listing</Link></li>
+                                <li className="breadcrumb-item"><Link className="text-white fw-bold" to="/owner/my-property-list">Vehicle Listing</Link></li>
                                 <li className="breadcrumb-item active text-white fw-bold" aria-current="page">Edit Property</li>
                             </ol>
                         </nav>

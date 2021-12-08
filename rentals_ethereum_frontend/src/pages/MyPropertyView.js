@@ -36,18 +36,18 @@ const MyPropertyView = () => {
                                             <th>Unit No.</th>
                                             <td>{item?.unitNumber}</td>
                                         </tr>
-                                        <tr>
+                                        {/* <tr>
                                             <th>Rooms</th>
                                             <td>{item?.rooms}</td>
                                         </tr>
                                         <tr>
                                             <th>Bathrooms</th>
                                             <td>{item?.bathrooms}</td>
-                                        </tr>
-                                        <tr>
+                                        </tr> */}
+                                        {/* <tr>
                                             <th>Parking</th>
                                             <td>{item?.parking}</td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <th>Location</th>
                                             <td>{item?.location}</td>
@@ -73,7 +73,7 @@ const MyPropertyView = () => {
                                             <td>{item?.NFTTokenId}</td>
                                         </tr>
                                         <tr>
-                                            <th>Property Type</th>
+                                            <th>Product Type</th>
                                             <td>{item?.propertyType}</td>
                                         </tr>
                                         <tr>

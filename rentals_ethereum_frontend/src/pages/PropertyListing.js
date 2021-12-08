@@ -37,12 +37,12 @@ const PropertyListing = () => {
                             <ol className="breadcrumb text-white fw-bold">
                                 <li className="breadcrumb-item"><Link className="text-white fw-bold" to="/">Home</Link></li>
                                 <li className="breadcrumb-item"><Link className="text-white fw-bold" to="/tenant">Tenant</Link></li>
-                                <li className="breadcrumb-item active text-white fw-bold" aria-current="page">Property Listing</li>
+                                <li className="breadcrumb-item active text-white fw-bold" aria-current="page">Vehicle Listing</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
-                <h4 className={"text-white fw-bold"}>Property Listing</h4>
+                <h4 className={"text-white fw-bold"}>Vehicle Listing</h4>
                 <div className="row">
                     <div className="col-md-4">
                         <div className="input-group mb-3">
@@ -79,14 +79,14 @@ const PropertyListing = () => {
                                                                 <th>Unit No.</th>
                                                                 <td>{item?.unitNumber}</td>
                                                             </tr>
-                                                            <tr>
+                                                            {/* <tr>
                                                                 <th>Bedrooms</th>
                                                                 <td>{item?.bathrooms}</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Parking</th>
                                                                 <td>{item?.parking}</td>
-                                                            </tr>
+                                                            </tr> */}
                                                             <tr>
                                                                 <th>Location</th>
                                                                 <td>{item?.location}</td>
